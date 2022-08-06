@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'core/environment/environment.dart';
+import 'features/splash/splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initializeCore(environment: Environment.staging);
+  // await initializeCore(environment: Environment.staging);
   runApp(const MyApp());
 }
 
