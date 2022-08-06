@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,9 +13,9 @@ class SplashScreen extends StatelessWidget {
             "assets/bg.png",
             fit: BoxFit.cover,
           ),
-          new DecoratedBox(
-            decoration: new BoxDecoration(
-                gradient: new LinearGradient(
+          const DecoratedBox(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
                     begin: FractionalOffset.bottomCenter,
                     end: FractionalOffset.topCenter,
                     colors: [
