@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'core/environment/environment.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initializeCore(environment: Environment.staging);
+  // await initializeCore(environment: Environment.staging);
   runApp(const MyApp());
 }
 
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: Container(),
     );
   }
 }
