@@ -19,34 +19,15 @@ class SplashScreen extends StatelessWidget {
                     begin: FractionalOffset.bottomCenter,
                     end: FractionalOffset.topCenter,
                     colors: [
-                  Colors.black45,
-                  Colors.black45,
+                  Colors.black54,
+                  Colors.black54,
                 ])),
           ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
             child: Align(
                 alignment: Alignment.centerLeft,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      "treepizy",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 75,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "Driver",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 70,
-                          ),
-                    ),
-                  ],
-                )),
+                child: Image.asset("assets/brand.png")),
           ),
         ],
       ),
