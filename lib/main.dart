@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'core/environment/environment.dart';
+import 'features/onboarding/onboarding1.dart';
 import 'features/splash/splash_screen.dart';
 
 Future<void> main() async {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: Onboarding1(),
     );
   }
 }
