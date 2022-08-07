@@ -16,24 +16,30 @@ class WelcomeTreepizy extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                Row(
-                  children: const [
-                    Icon(
-                      Icons.arrow_back,
-                      color: Colors.black,
-                      size: 25,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      "BACK",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ],
+                GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Row(
+                    children: const [
+                      Icon(
+                        Icons.arrow_back,
+                        color: Colors.black,
+                        size: 25,
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        "BACK",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: 200,
@@ -107,9 +113,8 @@ class WelcomeTreepizy extends StatelessWidget {
                       height: 30,
                     ),
                     ButtonWidget(
-                      onTap: () => Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                              builder: (context) => const OtpScreen())),
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const OtpScreen())),
                       isIcon: true,
                       elevation: 3,
                       color: Colors.white,

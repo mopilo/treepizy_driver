@@ -13,24 +13,30 @@ class OtpScreen extends StatelessWidget {
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: const [
-                Icon(
-                  Icons.arrow_back,
-                  color: Colors.black,
-                  size: 25,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  "BACK",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500),
-                ),
-              ],
+            GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Row(
+                children: const [
+                  Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                    size: 25,
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    "BACK",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(
               height: 200,
