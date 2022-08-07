@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treepizy_driver/features/splash/splash_screen_auth.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -6,6 +7,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Stack(
         fit: StackFit.expand,
         children: [
