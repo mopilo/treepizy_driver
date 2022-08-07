@@ -4,7 +4,7 @@ class CustomColors {
   static const primaryColor = Color(0xFFFFB84E);
   static const white = Color(0xffffffff);
   static const fadedWhite = Color(0xffffffff);
-  static const green = Color(0xff219653);
+  static const dark = Color(0xff030504);
   static const black = Color(0xff000000);
   static const primaryAccentColor = Color(0xffF2994A);
   static const buttonColor = Color(0xff91C71A);
