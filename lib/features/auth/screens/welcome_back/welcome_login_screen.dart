@@ -24,24 +24,30 @@ class _WelcomeBackScreenState extends State<WelcomeBackScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: const [
-                  Icon(
-                    Icons.arrow_back,
-                    color: Colors.black,
-                    size: 25,
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    "WELCOME",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ],
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Row(
+                  children: const [
+                    Icon(
+                      Icons.arrow_back,
+                      color: Colors.black,
+                      size: 25,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      "WELCOME",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(
                 height: 200,
@@ -96,7 +102,7 @@ class _WelcomeBackScreenState extends State<WelcomeBackScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ButtonWidget(
-                        onTap: ()=>Navigator.of(context).pushReplacement(
+                        onTap: ()=>Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (context) => const WelcomeTreepizy())),
                         isIcon: true,

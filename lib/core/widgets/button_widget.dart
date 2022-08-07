@@ -7,7 +7,7 @@ class ButtonWidget extends StatelessWidget {
     this.color,
     this.colorText,
     this.buttonText,
-    this.fontSize = 18,
+    this.fontSize = 14,
     this.isIcon = false,
     required this.onTap,
   }) : super(key: key);
@@ -25,17 +25,17 @@ class ButtonWidget extends StatelessWidget {
       onTap: onTap!,
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(6.0),
         ),
         elevation: elevation,
         child: Container(
           decoration: BoxDecoration(
             color: color,
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
+            borderRadius: const BorderRadius.all(Radius.circular(6)),
           ),
           child: Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: 30.0, vertical: isIcon! ? 18.8 : 25),
+                horizontal: 30.0, vertical: isIcon! ? 14.8 : 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
