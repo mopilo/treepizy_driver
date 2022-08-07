@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:treepizy_driver/features/auth/welcome_back/welcome_login_screen.dart';
+import 'package:treepizy_driver/features/auth/screens/welcome_back/welcome_login_screen.dart';
 
 class SplashScreenAuth extends StatelessWidget {
   const SplashScreenAuth({Key? key}) : super(key: key);
