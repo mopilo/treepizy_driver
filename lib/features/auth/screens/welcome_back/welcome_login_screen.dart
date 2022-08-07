@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:treepizy_driver/features/screen/welcome_back/welcome_treepizy.dart';
-import 'package:treepizy_driver/features/widgets/button_widget.dart';
-import 'package:treepizy_driver/features/widgets/text_form_field.dart';
+import 'package:treepizy_driver/core/widgets/button_widget.dart';
+import 'package:treepizy_driver/core/widgets/text_form_field.dart';
+
+import 'welcome_treepizy.dart';
+
 
 class WelcomeBackScreen extends StatefulWidget {
   const WelcomeBackScreen({Key? key}) : super(key: key);
