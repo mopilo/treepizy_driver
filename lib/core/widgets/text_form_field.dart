@@ -58,7 +58,7 @@ class EditTextForm extends StatelessWidget {
     return TextFormField(
       validator: validator,
       decoration: InputDecoration(
-          contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          contentPadding: const EdgeInsets.fromLTRB(2.0, 15.0, 20.0, 15.0),
           labelStyle: const TextStyle(color: Colors.grey),
           label: Text(label ?? ''),
           // border: OutlineInputBorder(
