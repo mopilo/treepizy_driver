@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treepizy_driver/features/auth/screens/vehicle_folder/vehicle_setting_screen.dart';
 import 'package:treepizy_driver/features/utils/color.dart';
 
 import '../../../core/widgets/button_widget.dart';
@@ -38,7 +39,7 @@ class ThankYouScreen extends StatelessWidget {
               ),
               ButtonWidget(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const ThankYouScreen())),
+                    builder: (context) => const VehicleSettingsScreen())),
                 isIcon: true,
                 buttonText: 'Go to Profile',
                 colorText: AppColors.white,
