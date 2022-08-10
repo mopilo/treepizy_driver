@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:treepizy_driver/features/onboarding/widget/onboarding_button.dart';
-import 'package:treepizy_driver/features/onboarding/widget/onboarding_text.dart';
 
-import 'onboarding2.dart';
+import 'package:flutter/material.dart';
 
 class Onboarding1 extends StatelessWidget {
   const Onboarding1({Key? key}) : super(key: key);
@@ -20,7 +17,7 @@ class Onboarding1 extends StatelessWidget {
                   "assets/driver_onboarding.png",
                   fit: BoxFit.cover,
                 ),
-                DecoratedBox(
+                 DecoratedBox(
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
                           begin: FractionalOffset.bottomCenter,
@@ -31,44 +28,48 @@ class Onboarding1 extends StatelessWidget {
                       ])),
                 ),
                 Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 80),
+                  margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 80),
                   child: Align(
                       alignment: Alignment.topCenter,
                       child: Image.asset("assets/brand_medium.png")),
                 ),
                 Positioned(
                   bottom: 40,
-                  left: 0,
-                  right: 0,
+                  left: 0, right: 0,
                   child: Align(
                       alignment: Alignment.center,
                       child: Column(
                         children: const [
-                          Text("Earn more",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24,
-                                  fontFamily: 'CreatoDisplay',
-                                  fontWeight: FontWeight.w600),
-                              textAlign: TextAlign.center),
+                          Text(
+                            "Earn more", 
+                            style: TextStyle(color: Colors.white, 
+                            fontSize: 24, 
+                            fontFamily: 'CreatoDisplay', 
+                            fontWeight: FontWeight.w600), 
+                            textAlign: TextAlign.center
+                          ),
                           SizedBox(height: 21),
-                          OnboardingText(color: Colors.white, fontWeight: FontWeight.w200,)
+                          Text(
+                              "Provides, rides, deliver items \nor transport goods",
+                              style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w200, height: 1.5),
+                              textAlign: TextAlign.center)
                         ],
                       )),
                 ),
               ],
             )),
-        Expanded(
-          flex: 1,
-          child: InkWell(
-            onTap: () {
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (_) => const Onboarding2()));
-            },
-            child: const OnboardingButton(),
-          ),
-        )
+            Expanded(
+              flex: 1,
+              child: Container(
+                height: 52, width: 52,
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.black
+                ),
+                child: const Icon(Icons.arrow_forward, color: Colors.white,),
+              ),
+            )
       ]),
     );
   }

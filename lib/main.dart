@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:treepizy_driver/features/auth/screens/forgot_password/forgot_password.dart';
-import 'features/splash/splash_screen.dart';
+
+import 'package:treepizy_driver/features/splash/splash_screen_auth.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'CreatoDisplay'
       ),
-      home: const SplashScreen(),
+      home: const SplashScreenAuth(),
     );
   }
 }
