@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:treepizy_driver/features/splash/splash_screen_auth.dart';
-import 'features/splash/splash_screen.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
