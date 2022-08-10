@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'CreatoDisplay'
       ),
-      home: const ForgotPassword(),
+      home: const SplashScreen(),
     );
   }
 }
