@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treepizy_driver/features/auth/screens/forgot_password/forgot_password.dart';
 import 'features/splash/splash_screen.dart';
 
 Future<void> main() async {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'CreatoDisplay'
       ),
-      home: const SplashScreen(),
+      home: const ForgotPassword(),
     );
   }
 }
