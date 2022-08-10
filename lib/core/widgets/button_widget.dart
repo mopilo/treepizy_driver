@@ -6,15 +6,21 @@ class ButtonWidget extends StatelessWidget {
     this.elevation,
     this.color,
     this.colorText,
+    this.fontWeight,
     this.buttonText,
+    this.iconColor,
+    this.colorBorder,
     this.fontSize = 14,
     this.isIcon = false,
     required this.onTap,
   }) : super(key: key);
   final double? elevation;
   final double? fontSize;
+  final FontWeight? fontWeight;
   final Color? color;
   final Color? colorText;
+  final Color? iconColor;
+  final Color? colorBorder;
   final String? buttonText;
   final bool? isIcon;
   final Function()? onTap;
@@ -30,6 +36,7 @@ class ButtonWidget extends StatelessWidget {
         elevation: elevation,
         child: Container(
           decoration: BoxDecoration(
+            border: Border.all(color: colorBorder ?? const Color(0x00000000)),
             color: color,
             borderRadius: const BorderRadius.all(Radius.circular(6)),
           ),
@@ -44,12 +51,12 @@ class ButtonWidget extends StatelessWidget {
                   style: TextStyle(
                       color: colorText,
                       fontSize: fontSize,
-                      fontWeight: FontWeight.w500),
+                      fontWeight: fontWeight ?? FontWeight.w500),
                 ),
                 isIcon!
                     ? Icon(
                         Icons.arrow_forward,
-                        color: colorText,
+                        color: iconColor ?? colorText,
                         size: 30,
                       )
                     : const SizedBox.shrink()

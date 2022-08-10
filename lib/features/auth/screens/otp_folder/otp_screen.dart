@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../create_account_folder/create_account.dart';
 
 class OtpScreen extends StatelessWidget {
   const OtpScreen({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class OtpScreen extends StatelessWidget {
                   Icon(
                     Icons.arrow_back,
                     color: Colors.black,
-                    size: 25,
+                    size: 20,
                   ),
                   SizedBox(
                     width: 5,
@@ -32,7 +33,7 @@ class OtpScreen extends StatelessWidget {
                     "BACK",
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 17,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500),
                   ),
                 ],
@@ -233,19 +234,24 @@ class OtpScreen extends StatelessWidget {
                           ),
                         ]),
                   ),
-                  Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                    elevation: 5,
-                    child: Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle, color: Colors.white),
-                      child: const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.grey,
-                        size: 25,
+                  GestureDetector(
+                    onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => const CreateAccountScreen())),
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                      elevation: 5,
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle, color: Colors.white),
+                        child: const Icon(
+                          Icons.arrow_forward,
+                          color: Colors.grey,
+                          size: 25,
+                        ),
                       ),
                     ),
                   )
