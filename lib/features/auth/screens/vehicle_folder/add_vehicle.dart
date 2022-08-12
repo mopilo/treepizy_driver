@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:treepizy_driver/features/auth/screens/vehicle_folder/vehicle_verification_folder/vehicle_verification_pending.dart';
+import 'package:treepizy_driver/features/onboarding/widget/edit_form_widget.dart';
 
 import '../../../../core/widgets/button_widget.dart';
 import '../../../utils/color.dart';
 
 class AddVehicleScreen extends StatelessWidget {
-  const AddVehicleScreen({Key? key}) : super(key: key);
+  AddVehicleScreen({Key? key}) : super(key: key);
+
+  final TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,7 @@ class AddVehicleScreen extends StatelessWidget {
               decoration: const BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: Color.fromARGB(28, 0, 0, 31),
+                    color: Color.fromARGB(40, 1, 1, 18),
                     blurRadius: 25.0,
                     spreadRadius: 170,
                   ),
@@ -55,9 +59,26 @@ class AddVehicleScreen extends StatelessWidget {
             const SizedBox(
               height: 100,
             ),
+            vehicleInfoContainer(
+                vehicleText: 'Vehicle Size', vehicleInfo: '4 Seater Sedan'),
+            const SizedBox(
+              height: 10,
+            ),
+            vehicleInfoContainer(
+                vehicleText: 'Vehicle Model', vehicleInfo: 'Toyota'),
+            vehicleInfoContainer(vehicleText: 'Model', vehicleInfo: 'Corolla'),
+            vehicleInfoContainer(vehicleText: 'Year', vehicleInfo: '2011'),
+            vehicleInfoContainer(vehicleText: 'Colour', vehicleInfo: 'Blue'),
+            vehicleInfoContainer(
+                vehicleText: 'Registration Number', vehicleInfo: 'ABC 654 BY'),
+            vehicleInfoContainer(
+                vehicleText: 'Passenger Seat', vehicleInfo: '4 Seaters'),
+            const SizedBox(
+              height: 70,
+            ),
             ButtonWidget(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const AddVehicleScreen())),
+                  builder: (context) => const VehicleVerificationPending())),
               isIcon: true,
               buttonText: 'Submit Details',
               colorText: AppColors.white,
@@ -71,4 +92,45 @@ class AddVehicleScreen extends StatelessWidget {
       )),
     );
   }
+
+  vehicleInfoContainer({String? vehicleText, String? vehicleInfo}) => Container(
+        margin: const EdgeInsets.only(bottom: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        decoration: BoxDecoration(
+            color: AppColors.white,
+            border: Border.all(color: AppColors.grey),
+            borderRadius: BorderRadius.circular(10)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  vehicleText!,
+                  style: const TextStyle(
+                      color: AppColors.grey,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w300),
+                ),
+                const SizedBox(
+                  height: 6,
+                ),
+                Text(
+                  vehicleInfo!,
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+            const Icon(
+              Icons.arrow_drop_down,
+              size: 20,
+              color: AppColors.grey,
+            )
+          ],
+        ),
+      );
 }
