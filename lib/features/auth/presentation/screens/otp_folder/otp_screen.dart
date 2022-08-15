@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import '../create_account_folder/create_account.dart';
 
 class OtpScreen extends StatelessWidget {
-  const OtpScreen({Key? key}) : super(key: key);
-
+  final String tel;
+  const OtpScreen({Key? key, required this.tel}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -235,9 +235,8 @@ class OtpScreen extends StatelessWidget {
                         ]),
                   ),
                   GestureDetector(
-                    onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (context) => const CreateAccountScreen())),
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const CreateAccountScreen())),
                     child: Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25.0),

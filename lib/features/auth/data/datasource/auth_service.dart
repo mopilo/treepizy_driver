@@ -47,17 +47,24 @@ class AuthService {
   //   }
   // }
 
-  Future<Either<String, Map<dynamic, dynamic>>> register(LoginModel loginModel) async {
+  Future<Either<String, Map<dynamic, dynamic>>> register(
+      LoginModel loginModel) async {
+    print({
+      "mobileNo": loginModel.mobileNo,
+      "plainPassword": loginModel.plainPassword
+    });
+    print('${_networkClient.baseUrl!}providers');
     try {
       Response userData = await _networkClient.dio
           .post('${_networkClient.baseUrl!}providers', data: {
         "mobileNo": loginModel.mobileNo,
         "plainPassword": loginModel.plainPassword
       });
-    
+
       return right(userData.data);
     } on DioError catch (e) {
       if (e.response != null) {
+        print(e.response);
         String error = await checker(e.response?.statusCode, e.response?.data);
         return left(error.toString());
       } else {

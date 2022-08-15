@@ -22,7 +22,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   // }
 
   Future<void> register(Register event, Emitter<AuthState> emit) async {
-    emit(LoginLoading());
+    emit(Loading());
     (await _authService.register(event.loginModel)).fold(
         (error) => emit(Error(error.toString())),
         (success) => emit(AuthSuccess()));
