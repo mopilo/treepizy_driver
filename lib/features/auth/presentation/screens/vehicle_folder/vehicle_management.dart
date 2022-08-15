@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
-import 'package:treepizy_driver/features/auth/screens/vehicle_folder/vehicle_managament2.dart';
+import 'package:treepizy_driver/core/widgets/card_button_widget.dart';
+import 'package:treepizy_driver/features/utils/color.dart';
 
-import '../../../../core/widgets/card_button_widget.dart';
-import '../../../utils/color.dart';
+import 'vehicle_managament2.dart';
+
+
 
 class VehicleManagement extends StatelessWidget {
   const VehicleManagement({Key? key}) : super(key: key);

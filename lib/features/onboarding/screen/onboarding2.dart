@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:treepizy_driver/core/utils/themes.dart';
-import 'package:treepizy_driver/features/auth/screens/welcome_back/welcome_screen.dart';
+import 'package:treepizy_driver/features/auth/presentation/screens/welcome_back/welcome_screen.dart';
 import 'package:treepizy_driver/features/onboarding/widget/onboarding_button.dart';
 import 'package:treepizy_driver/features/onboarding/widget/onboarding_text.dart';
 

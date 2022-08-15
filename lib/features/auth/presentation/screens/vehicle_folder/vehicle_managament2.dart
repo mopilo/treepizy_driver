@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:treepizy_driver/features/auth/screens/vehicle_folder/add_vehicle.dart';
-import '../../../../core/widgets/button_widget.dart';
-import '../../../../core/widgets/card_button_widget.dart';
-import '../../../utils/color.dart';
+import 'package:treepizy_driver/core/widgets/button_widget.dart';
+import 'package:treepizy_driver/core/widgets/card_button_widget.dart';
+import 'package:treepizy_driver/features/auth/presentation/screens/vehicle_folder/add_vehicle.dart';
+import 'package:treepizy_driver/features/utils/color.dart';
 
 class VehicleManagementSecondScreen extends StatelessWidget {
   const VehicleManagementSecondScreen({Key? key}) : super(key: key);

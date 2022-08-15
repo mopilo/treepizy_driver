@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../core/widgets/button_widget.dart';
-import '../../../../utils/color.dart';
+import 'package:treepizy_driver/core/widgets/button_widget.dart';
+import 'package:treepizy_driver/features/utils/color.dart';
 
 class VehicleVerificationDisapproved extends StatelessWidget {
   const VehicleVerificationDisapproved({Key? key}) : super(key: key);

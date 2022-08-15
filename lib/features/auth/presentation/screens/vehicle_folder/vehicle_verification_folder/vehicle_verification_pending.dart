@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:treepizy_driver/features/auth/screens/vehicle_folder/vehicle_verification_folder/vehicle_verification_disapproved.dart';
-import '../../../../../core/widgets/button_widget.dart';
-import '../../../../utils/color.dart';
+import 'package:treepizy_driver/core/widgets/button_widget.dart';
+import 'package:treepizy_driver/features/utils/color.dart';
 
-class VehicleVerificationApproved extends StatelessWidget {
-  const VehicleVerificationApproved({Key? key}) : super(key: key);
+import 'vehicle_verification_approved.dart';
+
+
+class VehicleVerificationPending extends StatelessWidget {
+  const VehicleVerificationPending({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,7 @@ class VehicleVerificationApproved extends StatelessWidget {
               height: 40,
             ),
             Image.asset(
-              'assets/approved.png',
+              'assets/pending.png',
               height: 250,
               width: 220,
             ),
@@ -65,9 +67,9 @@ class VehicleVerificationApproved extends StatelessWidget {
               height: 15,
             ),
             const Text(
-              "APPROVED",
+              "PENDING",
               style: TextStyle(
-                  color: AppColors.green,
+                  color: AppColors.yellowThick,
                   fontSize: 17,
                   fontWeight: FontWeight.w600),
             ),
@@ -75,7 +77,7 @@ class VehicleVerificationApproved extends StatelessWidget {
               height: 10,
             ),
             const Text(
-              "You're all set!!!",
+              "We'll review your\nrequest",
               style: TextStyle(
                   color: AppColors.black,
                   fontSize: 22,
@@ -86,7 +88,7 @@ class VehicleVerificationApproved extends StatelessWidget {
               height: 20,
             ),
             const Text(
-              "Thank you or your patience, your vehicle\n has been approved, you can now start\n taking trips",
+              "While reviewing your vehicle we might contact you for physical vehicle inspection as part of the verification process",
               style: TextStyle(
                   color: AppColors.black,
                   fontSize: 16,
@@ -94,7 +96,7 @@ class VehicleVerificationApproved extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(
-              height: 40,
+              height: 25,
             ),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 50),
@@ -110,12 +112,11 @@ class VehicleVerificationApproved extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 45,
+              height: 35,
             ),
             ButtonWidget(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      const VehicleVerificationDisapproved())),
+                  builder: (context) => const VehicleVerificationApproved())),
               isIcon: true,
               buttonText: 'Vehicle Details',
               colorText: AppColors.white,

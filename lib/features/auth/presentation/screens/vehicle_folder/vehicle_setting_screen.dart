@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
-import 'package:treepizy_driver/features/auth/screens/vehicle_folder/vehicle_management.dart';
+import 'package:treepizy_driver/features/utils/color.dart';
 
-import '../../../utils/color.dart';
+import 'vehicle_management.dart';
 
 class VehicleSettingsScreen extends StatelessWidget {
   const VehicleSettingsScreen({Key? key}) : super(key: key);

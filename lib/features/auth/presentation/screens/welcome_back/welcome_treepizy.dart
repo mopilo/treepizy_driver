@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
-import 'package:treepizy_driver/features/auth/screens/otp_folder/otp_screen.dart';
+
+import '../otp_folder/otp_screen.dart';
 
 class WelcomeTreepizy extends StatelessWidget {
   const WelcomeTreepizy({Key? key}) : super(key: key);

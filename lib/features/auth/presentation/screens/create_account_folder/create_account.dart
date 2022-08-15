@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:treepizy_driver/core/widgets/button_widget.dart';
 import 'package:treepizy_driver/core/widgets/text_form_field.dart';
 import 'package:treepizy_driver/features/utils/color.dart';
-import '../../../../core/widgets/button_widget.dart';
 import '../card_folder/add_card_screen.dart';
 
 class CreateAccountScreen extends StatelessWidget {

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:treepizy_driver/features/auth/screens/vehicle_folder/vehicle_setting_screen.dart';
+import 'package:treepizy_driver/core/widgets/button_widget.dart';
 import 'package:treepizy_driver/features/utils/color.dart';
 
-import '../../../core/widgets/button_widget.dart';
+import 'vehicle_folder/vehicle_setting_screen.dart';
+
 
 class ThankYouScreen extends StatelessWidget {
   const ThankYouScreen({Key? key}) : super(key: key);

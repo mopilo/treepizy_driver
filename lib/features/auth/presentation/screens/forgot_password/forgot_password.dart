@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
 import 'package:treepizy_driver/core/widgets/text_form_field.dart';
-import 'package:treepizy_driver/features/auth/widgets/back_widget.dart';
+import 'package:treepizy_driver/features/auth/presentation/widgets/back_widget.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);

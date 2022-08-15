@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
-import 'package:treepizy_driver/features/auth/screens/welcome_back/welcome_login_screen.dart';
+
+import 'welcome_login_screen.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({Key? key}) : super(key: key);
