@@ -122,7 +122,7 @@ class VehicleManagementSecondScreen extends StatelessWidget {
                   const SizedBox(height: 95),
                   ButtonWidget(
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const AddVehicleScreen())),
+                        builder: (context) =>  AddVehicleScreen())),
                     isIcon: true,
                     buttonText: 'Enter Vehicle Details',
                     colorText: AppColors.white,
