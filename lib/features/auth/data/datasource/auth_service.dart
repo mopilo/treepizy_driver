@@ -25,16 +25,37 @@ class AuthService {
     }
   }
 
-  Future<Either<String, LoginResponse>> login(LoginModel loginModel) async {
+  // Future<Either<String, LoginResponse>> login(LoginModel loginModel) async {
+  //   try {
+  //     Response userData = await _networkClient.dio.post(
+  //         '${_networkClient.baseUrl!}school/login',
+  //         data: {"mobileNo": loginModel.mobileNo, "plainPassword": loginModel.plainPassword});
+  //     final loginResponse = LoginResponse.fromJson(userData.data);
+  //     SessionManager.instance.authToken = loginResponse.token;
+  //     SessionManager.instance.usersData=
+  //         loginResponse.schoolData?.toJson() as Map<String, dynamic>;
+  //     return right(LoginResponse.fromJson(userData.data));
+  //   } on DioError catch (e) {
+  //     if (e.response != null) {
+  //       String error = await checker(e.response?.statusCode, e.response?.data);
+  //       return left(error.toString());
+  //     } else {
+  //       print(e.message);
+  //       print("valalallala");
+  //       return left("Make sure you're connected to an internet source");
+  //     }
+  //   }
+  // }
+
+  Future<Either<String, Map<dynamic, dynamic>>> register(LoginModel loginModel) async {
     try {
-      Response userData = await _networkClient.dio.post(
-          '${_networkClient.baseUrl!}school/login',
-          data: {"email": loginModel.email, "password": loginModel.password});
-      final loginResponse = LoginResponse.fromJson(userData.data);
-      SessionManager.instance.authToken = loginResponse.token;
-      SessionManager.instance.usersData=
-          loginResponse.schoolData?.toJson() as Map<String, dynamic>;
-      return right(LoginResponse.fromJson(userData.data));
+      Response userData = await _networkClient.dio
+          .post('${_networkClient.baseUrl!}providers', data: {
+        "mobileNo": loginModel.mobileNo,
+        "plainPassword": loginModel.plainPassword
+      });
+    
+      return right(userData.data);
     } on DioError catch (e) {
       if (e.response != null) {
         String error = await checker(e.response?.statusCode, e.response?.data);

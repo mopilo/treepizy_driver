@@ -10,13 +10,21 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthService _authService;
   AuthBloc(this._authService) : super(AuthInitial()) {
-    on<LoginButtonPressed>(login);
+    // on<LoginButtonPressed>(login);
+    on<Register>(register);
   }
 
-  Future<void> login(LoginButtonPressed event, Emitter<AuthState> emit) async {
+  // Future<void> login(LoginButtonPressed event, Emitter<AuthState> emit) async {
+  //   emit(LoginLoading());
+  //   (await _authService.login(event.loginModel)).fold(
+  //       (error) => emit(Error(error.toString())),
+  //       (success) => emit(AuthSuccess()));
+  // }
+
+  Future<void> register(Register event, Emitter<AuthState> emit) async {
     emit(LoginLoading());
-    (await _authService.login(event.loginModel)).fold(
+    (await _authService.register(event.loginModel)).fold(
         (error) => emit(Error(error.toString())),
-        (success) => emit(LoginSuccess()));
+        (success) => emit(AuthSuccess()));
   }
 }

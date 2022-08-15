@@ -2,6 +2,11 @@
 import 'package:treepizy_driver/core/data/session_manager.dart';
 import 'package:treepizy_driver/core/environment/environment.dart';
 import 'package:get_it/get_it.dart';
+import 'package:treepizy_driver/core/network/network_client.dart';
+import 'package:treepizy_driver/core/routing/compass.dart';
+import 'package:treepizy_driver/features/auth/data/datasource/auth_service.dart';
+import 'package:treepizy_driver/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:treepizy_driver/features/splash/splash_bloc.dart';
 
 
 final inject = GetIt.instance;
@@ -35,8 +40,8 @@ void _initProviders() {
 
 /// Initialize bloc's here
 void _initBloc() {
-  // inject.registerFactory<SplashCubit>(() => SplashCubit(inject()));
-  // inject.registerLazySingleton<AuthCubit>(() => AuthCubit(inject()));
+  inject.registerFactory<SplashCubit>(() => SplashCubit(inject()));
+  inject.registerLazySingleton<AuthBloc>(() => AuthBloc(inject()));
   // inject.registerLazySingleton<MoveCubit>(() => MoveCubit(inject()));
 }
 
@@ -48,11 +53,11 @@ void _initDataRepositories() {}
 
 /// Initialize services's here
 void _initServices() {
-  // inject.registerLazySingleton<NetworkClient>(
-  //     () => NetworkClient(baseUrl: Env.coreBaseUrl));
-  // inject.registerLazySingleton<AuthService>(
-  //     () => AuthService(networkService: inject()));
-  // inject.registerSingleton<Compass>(CompassImpl());
+  inject.registerLazySingleton<NetworkClient>(
+      () => NetworkClient(baseUrl: Env.coreBaseUrl));
+  inject.registerLazySingleton<AuthService>(
+      () => AuthService(networkService: inject()));
+  inject.registerSingleton<Compass>(CompassImpl());
   // inject.registerLazySingleton<HomeService>(
   //     () => HomeService(networkService: inject()));
   // inject.registerLazySingleton<ProfileService>(

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
+import 'package:treepizy_driver/features/auth/presentation/screens/create_account_folder/create_account.dart';
 
-import 'welcome_login_screen.dart';
+import 'login.dart';
+import 'sign_up.dart';
 
+
+class WelcomeScreenRoute extends MaterialPageRoute<bool> {
+  WelcomeScreenRoute() : super(builder: (_) => const Welcome());
+}
 class Welcome extends StatelessWidget {
   const Welcome({Key? key}) : super(key: key);
 
@@ -32,14 +38,14 @@ class Welcome extends StatelessWidget {
         ),
         Positioned(
           bottom: 60,
-          left: 20, right: 20,
-          child:  Column(
+          left: 20,
+          right: 20,
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ButtonWidget(
-                onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                        builder: (context) => const WelcomeBackScreen())),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const WelcomeBackScreen())),
                 isIcon: true,
                 color: Colors.white,
                 colorText: Colors.black,
@@ -48,14 +54,20 @@ class Welcome extends StatelessWidget {
               const SizedBox(
                 height: 38,
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 33.0),
-                child: Text(
-                  "Or Create My Account",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const SignUp()));
+                },
+                child: const Padding(
+                  padding: EdgeInsets.only(left: 33.0),
+                  child: Text(
+                    "Or Create My Account",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700),
+                  ),
                 ),
               ),
             ],

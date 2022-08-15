@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
 import 'package:treepizy_driver/core/widgets/text_form_field.dart';
+import 'package:treepizy_driver/features/auth/presentation/screens/create_account_folder/create_account.dart';
 
-import 'welcome_treepizy.dart';
+import 'sign_up.dart';
 
 
 class WelcomeBackScreen extends StatefulWidget {
@@ -104,7 +105,7 @@ class _WelcomeBackScreenState extends State<WelcomeBackScreen> {
                       ButtonWidget(
                         onTap: ()=>Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (context) => const WelcomeTreepizy())),
+                            builder: (context) => const SignUp())),
                         isIcon: true,
                         color: Colors.black,
                         colorText: Colors.white,
@@ -113,14 +114,21 @@ class _WelcomeBackScreenState extends State<WelcomeBackScreen> {
                       const SizedBox(
                         height: 38,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 33.0),
-                        child: Text(
-                          "Or Create My Account",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  const CreateAccountScreen()));
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 33.0),
+                          child: Text(
+                            "Or Create My Account",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                       ),
                     ],

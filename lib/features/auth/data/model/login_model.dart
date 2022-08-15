@@ -1,6 +1,8 @@
 class LoginModel {
-  final String? email;
-  final String? password;
+  final String? mobileNo;
+  final String? plainPassword;
 
-  LoginModel(this.email, this.password);
+  LoginModel(this.mobileNo, this.plainPassword);
 }
+
+

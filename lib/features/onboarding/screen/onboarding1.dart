@@ -4,6 +4,9 @@ import 'package:treepizy_driver/features/onboarding/widget/onboarding_text.dart'
 
 import 'onboarding2.dart';
 
+class OnBoardingFirstScreenRoute extends MaterialPageRoute<bool> {
+  OnBoardingFirstScreenRoute() : super(builder: (_) => const Onboarding1());
+}
 class Onboarding1 extends StatelessWidget {
   const Onboarding1({Key? key}) : super(key: key);
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:treepizy_driver/features/auth/presentation/screens/welcome_back/welcome_login_screen.dart';
+import 'package:treepizy_driver/features/auth/presentation/screens/create_account_folder/create_account.dart';
+import 'package:treepizy_driver/features/auth/presentation/screens/welcome_back/login.dart';
 
 class SplashScreenAuth extends StatelessWidget {
   const SplashScreenAuth({Key? key}) : super(key: key);
@@ -92,13 +93,19 @@ class SplashScreenAuth extends StatelessWidget {
                     const SizedBox(
                       height: 8,
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 33.0),
-                      child: Text(
-                        "Or Create My Account",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const CreateAccountScreen()));
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 33.0),
+                        child: Text(
+                          "Or Create My Account",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),

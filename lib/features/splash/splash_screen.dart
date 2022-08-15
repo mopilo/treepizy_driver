@@ -1,8 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:treepizy_driver/core/injection/injection_container.dart';
+import 'package:treepizy_driver/features/splash/splash_bloc.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  late SplashCubit _splashCubit;
+
+
+@override
+  void initState() {
+    super.initState();
+    _splashCubit = SplashCubit(inject());
+  }
+
+  @override
+  void dispose() {
+    _splashCubit.close();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

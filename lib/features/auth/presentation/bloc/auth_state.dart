@@ -12,7 +12,7 @@ class Loading extends AuthState {}
 
 class AuthInitial extends AuthState {}
 
-class LoginSuccess extends AuthState {}
+class AuthSuccess extends AuthState {}
 
 class Error extends AuthState {
   String error;

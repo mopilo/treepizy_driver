@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
+import 'package:treepizy_driver/core/widgets/text_form_field.dart';
 
 import '../otp_folder/otp_screen.dart';
 
-class WelcomeTreepizy extends StatelessWidget {
-  const WelcomeTreepizy({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
+
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  TextEditingController telController = TextEditingController();
+  TextEditingController passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,13 +75,25 @@ class WelcomeTreepizy extends StatelessWidget {
                     const SizedBox(
                       height: 40,
                     ),
-                    ButtonWidget(
-                      onTap: () {},
-                      elevation: 3,
-                      color: Colors.white,
-                      fontSize: 16,
-                      colorText: Colors.grey,
-                      buttonText: 'Enter your phone number',
+                     const Text(
+                      "Phone number",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400),
+                    ),
+                    EditTextForm(
+                      controller: telController,
+                      readOnly: false,
+                      label: '+234',
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    EditTextForm(
+                      controller: passController,
+                      readOnly: false,
+                      label: 'Password',
                     ),
                     const SizedBox(
                       height: 30,
@@ -116,9 +137,9 @@ class WelcomeTreepizy extends StatelessWidget {
                           builder: (context) => const OtpScreen())),
                       isIcon: true,
                       elevation: 3,
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 16,
-                      colorText: Colors.grey,
+                      colorText: Colors.white,
                       buttonText: 'Continue',
                     ),
                   ],
