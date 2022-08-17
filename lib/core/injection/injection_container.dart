@@ -6,6 +6,7 @@ import 'package:treepizy_driver/core/network/network_client.dart';
 import 'package:treepizy_driver/core/routing/compass.dart';
 import 'package:treepizy_driver/features/auth/data/datasource/auth_service.dart';
 import 'package:treepizy_driver/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:treepizy_driver/features/home/provider/home_provider.dart';
 import 'package:treepizy_driver/features/splash/splash_bloc.dart';
 
 
@@ -31,11 +32,7 @@ Future<void> _initializeCore() async {
 
 /// Initialize providers here
 void _initProviders() {
-  // inject.registerLazySingleton<HomeProvider>(() => HomeProvider(inject()));
-  // inject
-  //     .registerLazySingleton<ProfileProvider>(() => ProfileProvider(inject()));
-  // inject.registerLazySingleton<MoveProvider>(() => MoveProvider(inject()));
-  // inject.registerLazySingleton<SetUpProvider>(() => SetUpProvider(inject()));
+  inject.registerLazySingleton<HomeProvider>(() => HomeProvider());
 }
 
 /// Initialize bloc's here
@@ -58,16 +55,7 @@ void _initServices() {
   inject.registerLazySingleton<AuthService>(
       () => AuthService(networkService: inject()));
   inject.registerSingleton<Compass>(CompassImpl());
-  // inject.registerLazySingleton<HomeService>(
-  //     () => HomeService(networkService: inject()));
-  // inject.registerLazySingleton<ProfileService>(
-  //     () => ProfileService(networkService: inject()));
-  // inject.registerLazySingleton<MoveService>(
-  //     () => MoveService(networkService: inject()));
-  // inject.registerLazySingleton<ChatService>(
-  //     () => ChatService(networkService: inject()));
-  // inject.registerLazySingleton<SetUpService>(
-  //     () => SetUpService(networkService: inject()));
+  
 }
 
 /// Initialize usecases here

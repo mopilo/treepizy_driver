@@ -14,6 +14,34 @@ class AuthInitial extends AuthState {}
 
 class AuthSuccess extends AuthState {}
 
+
+class ValidatedOtp extends AuthState {}
+
+class ResendOtp extends AuthState {
+  Map? data;
+  ResendOtp(this.data);
+}
+
+class UserModified extends AuthState {
+  Map? data;
+  UserModified(this.data);
+}
+
+class UserAvatarModified extends AuthState {
+  Map? data;
+  UserAvatarModified(this.data);
+}
+
+class PasswordModified extends AuthState {
+  // Map? data;
+  // PasswordModified(this.data);
+}
+
+class ResetSuccess extends AuthState {
+  Map? data;
+  ResetSuccess(this.data);
+}
+
 class Error extends AuthState {
   String error;
 
