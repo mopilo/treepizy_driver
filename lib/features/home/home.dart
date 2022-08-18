@@ -23,7 +23,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance?.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     _homeProvider = Provider.of<HomeProvider>(context, listen: false);
     _homeProvider?.obtainPermission(context);
   }

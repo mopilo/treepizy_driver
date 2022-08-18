@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:treepizy_driver/core/injection/injection_container.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
 import 'package:treepizy_driver/core/widgets/text_form_field.dart';
@@ -38,13 +39,12 @@ class _WelcomeBackScreenState extends State<WelcomeBackScreen> {
                 listener: (BuildContext context, state) {
               if (state is AuthSuccess) {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => Home()));
+                    context, MaterialPageRoute(builder: (_) => const Home()));
                 // _telController.clear(); _passwordController.clear();
               }
             }, builder: (BuildContext context, state) {
               return SingleChildScrollView(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.w),
                 child: SafeArea(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,15 +127,18 @@ class _WelcomeBackScreenState extends State<WelcomeBackScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ButtonWidget(
-                                onTap: () {_authBloc?.add(LoginButtonPressed(
-                                        loginModel: LoginModel(
-                                           "234${telController.text}",
-                                            passController.text)));},
+                                onTap: () {
+                                  _authBloc?.add(LoginButtonPressed(
+                                      loginModel: LoginModel(
+                                          "234${telController.text}",
+                                          passController.text)));
+                                },
                                 isIcon: true,
                                 color: Colors.black,
                                 colorText: Colors.white,
-                                buttonText:state is LoginLoading
-                                    ? "Loading..." : 'Login',
+                                buttonText: state is LoginLoading
+                                    ? "Loading..."
+                                    : 'Login',
                               ),
                               const SizedBox(
                                 height: 38,

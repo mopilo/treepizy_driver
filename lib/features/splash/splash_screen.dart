@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:treepizy_driver/core/injection/injection_container.dart';
 import 'package:treepizy_driver/features/splash/splash_bloc.dart';
 
@@ -12,8 +13,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   late SplashCubit _splashCubit;
 
-
-@override
+  @override
   void initState() {
     super.initState();
     _splashCubit = SplashCubit(inject());
@@ -24,6 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     _splashCubit.close();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ])),
           ),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
+            margin: EdgeInsets.symmetric(horizontal: 20.w),
             child: Align(
                 alignment: Alignment.centerLeft,
                 child: Image.asset("assets/brand.png")),

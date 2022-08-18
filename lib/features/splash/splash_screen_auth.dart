@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:treepizy_driver/features/auth/presentation/screens/create_account_folder/create_account.dart';
 import 'package:treepizy_driver/features/auth/presentation/screens/welcome_back/login.dart';
 
@@ -31,19 +32,19 @@ class SplashScreenAuth extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       "treepizy",
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 42,
+                          fontSize: 42.sp,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "Driver",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 37,
+                        fontSize: 37.sp,
                       ),
                     ),
                   ],

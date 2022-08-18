@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:treepizy_driver/core/injection/injection_container.dart';
-import 'package:treepizy_driver/features/auth/presentation/screens/change_password.dart';
 import '../../bloc/auth_bloc.dart';
 import '../create_account_folder/create_account.dart';
 
@@ -32,7 +30,7 @@ class _OtpScreenState extends State<OtpScreen> {
             listener: (BuildContext context, state) {
           if (state is ValidatedOtp) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (_) => ChangePassword()));
+                context, MaterialPageRoute(builder: (_) => const CreateAccountScreen()));
             // _telController.clear(); _passwordController.clear();
           }
         }, builder: (BuildContext context, state) {
