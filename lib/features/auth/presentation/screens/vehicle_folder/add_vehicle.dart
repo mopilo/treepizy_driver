@@ -82,7 +82,10 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
                 vehicleInfoContainer(
                     vehicleText: 'Vehicle Model', vehicleInfo: 'Toyota'),
                 vehicleInfoContainer(
-                    vehicleText: 'Model', vehicleInfo: 'Corolla', isShow: true),
+                    vehicleText: 'Model',
+                    vehicleInfo: 'Corolla',
+                    isShow: true,
+                    function: () => print('rpint io i')),
                 vehicleInfoContainer(vehicleText: 'Year', vehicleInfo: '2011'),
                 vehicleInfoContainer(
                     vehicleText: 'Colour', vehicleInfo: 'Blue', isShow: true),
@@ -115,7 +118,10 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
   }
 
   vehicleInfoContainer(
-          {String? vehicleText, String? vehicleInfo, bool? isShow = false,Function()? function}) =>
+          {String? vehicleText,
+          String? vehicleInfo,
+          bool? isShow = false,
+          Function()? function}) =>
       Container(
         margin: const EdgeInsets.only(bottom: 15),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
@@ -150,13 +156,13 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
             ),
             isShow!
                 ? GestureDetector(
-                  onTap: function,
-                  child: Icon(
+                    onTap: function,
+                    child: Icon(
                       Icons.arrow_drop_down,
                       size: 20.sp,
                       color: AppColors.grey,
                     ),
-                )
+                  )
                 : const SizedBox.shrink()
           ],
         ),
