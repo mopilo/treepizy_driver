@@ -21,16 +21,12 @@ class Onboarding2 extends StatelessWidget {
             "assets/city_driver.png",
             fit: BoxFit.cover,
           )),
-          InkWell(
-            onTap:
-                Provider.of<VehicleProvider>(context, listen: false).getVehicle,
-            child: const Text("Earn money when you... ",
-                style: TextStyle(
-                    color: CustomColors.dark,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600),
-                textAlign: TextAlign.center),
-          ),
+          const Text("Earn money when you... ",
+              style: TextStyle(
+                  color: CustomColors.dark,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center),
           const SizedBox(height: 31),
           const OnboardingText(
               color: CustomColors.dark, fontWeight: FontWeight.w300),

@@ -9,3 +9,4 @@ class NetworkClient {
   String? get baseUrl => _baseUrlLink;
   Dio dio = Dio();
 }
+
