@@ -1,14 +1,13 @@
-// import 'package:provider/provider.dart';
-// import 'package:provider/single_child_widget.dart';
-// import 'package:treepizy/core/injection/injection_container.dart';
-// import 'package:treepizy/features/move/presentation/provider/move_provider.dart';
-// import 'package:treepizy/features/profile/presentation/provider/profile_provider.dart';
-// import 'package:treepizy/features/ride/presentation/provider/home_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
+import 'package:treepizy_driver/features/auth/presentation/provider/vehicle_provider.dart';
+import 'package:treepizy_driver/features/home/provider/home_provider.dart';
 
-// class Providers {
-//   static List<SingleChildWidget> getProviders = [
-//     ChangeNotifierProvider(create: (_) => HomeProvider(inject())),
-//     ChangeNotifierProvider(create: (_) => ProfileProvider(inject())),
-//     ChangeNotifierProvider(create: (_) => MoveProvider(inject()))
-//   ];
-// }
+import '../injection/injection_container.dart';
+
+class Providers {
+  static List<SingleChildWidget> getProviders = [
+    ChangeNotifierProvider(create: (_) => HomeProvider()),
+    ChangeNotifierProvider(create: (_) => VehicleProvider(inject()))
+  ];
+}

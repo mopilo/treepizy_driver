@@ -1,5 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mopilo.treepizy_driver">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
    <application
         android:label="treepizy_driver"
         android:name="${applicationName}"
@@ -30,5 +35,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+            <!--map sdk key-->
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD-BcnafK2G3DSOTUBPfgQVy8nfB94eOU8"/>
+
     </application>
 </manifest>
