@@ -58,7 +58,6 @@ class AuthService {
   Future<Either<String, Map<dynamic, dynamic>>> register(
       LoginModel loginModel) async {
     try {
-      print( '${loginModel.mobileNo}' '${loginModel.plainPassword}');
       Response userData = await _networkClient.dio
           .post('${_networkClient.baseUrl!}providers', data: {
         "mobileNo": loginModel.mobileNo,
