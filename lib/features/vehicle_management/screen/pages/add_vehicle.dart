@@ -5,7 +5,8 @@ import 'package:treepizy_driver/core/widgets/button_widget.dart';
 import 'package:treepizy_driver/features/utils/color.dart';
 import 'package:treepizy_driver/features/vehicle_management/screen/provider/vehicle_provider.dart';
 
-import 'vehicle_verification_folder/vehicle_verification_pending.dart';
+import '../vehicle_verification_folder/vehicle_verification_pending.dart';
+
 
 class AddVehicleScreen extends StatefulWidget {
   AddVehicleScreen({Key? key}) : super(key: key);
