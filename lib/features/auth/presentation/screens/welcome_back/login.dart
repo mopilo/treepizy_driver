@@ -109,6 +109,7 @@ class _WelcomeBackScreenState extends State<WelcomeBackScreen> {
                             controller: passController,
                             readOnly: false,
                             label: 'Password',
+                            obscureText: true,
                           ),
                           const SizedBox(
                             height: 30,
