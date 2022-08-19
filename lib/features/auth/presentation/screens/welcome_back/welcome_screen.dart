@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
-import 'package:treepizy_driver/features/auth/presentation/screens/create_account_folder/create_account.dart';
 
 import 'login.dart';
 import 'sign_up.dart';
 
-
 class WelcomeScreenRoute extends MaterialPageRoute<bool> {
   WelcomeScreenRoute() : super(builder: (_) => const Welcome());
 }
+
 class Welcome extends StatelessWidget {
   const Welcome({Key? key}) : super(key: key);
 
@@ -50,25 +50,29 @@ class Welcome extends StatelessWidget {
                 color: Colors.white,
                 colorText: Colors.black,
                 buttonText: 'Login with Phone',
+                fontSize: 15.sp,
               ),
-              const SizedBox(
-                height: 38,
+              SizedBox(
+                height: 25.h,
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const SignUp()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const SignUp()));
                 },
-                child: const Padding(
-                  padding: EdgeInsets.only(left: 33.0),
+                child: Padding(
+                  padding: EdgeInsets.only(left: 33.w),
                   child: Text(
                     "Or Create My Account",
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.w700),
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 15.h,
               ),
             ],
           ),

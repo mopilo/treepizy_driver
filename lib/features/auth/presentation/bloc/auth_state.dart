@@ -12,8 +12,10 @@ class Loading extends AuthState {}
 
 class AuthInitial extends AuthState {}
 
-class AuthSuccess extends AuthState {}
-
+class AuthSuccess extends AuthState {
+  Map? data;
+  AuthSuccess(this.data);
+}
 
 class ValidatedOtp extends AuthState {}
 
