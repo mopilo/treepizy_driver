@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:treepizy_driver/core/network/network_client.dart';
-import 'package:treepizy_driver/features/auth/data/model/vehicle_category_model.dart';
-import 'package:treepizy_driver/features/auth/data/model/vehicle_make_model.dart';
+import 'package:treepizy_driver/features/vehicle_management/data/model/vehicle_category_model.dart';
+import 'package:treepizy_driver/features/vehicle_management/data/model/vehicle_make_model.dart';
 
 import '../../../../core/data/session_manager.dart';
 

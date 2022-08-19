@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
 import 'package:treepizy_driver/features/utils/color.dart';
+import 'package:treepizy_driver/features/vehicle_management/screen/pages/vehicle_setting_screen.dart';
 
-import 'vehicle_folder/vehicle_setting_screen.dart';
 
 
 class ThankYouScreen extends StatelessWidget {

@@ -1,14 +1,14 @@
 
-class VehicleMakeModel {
+class VehicleCategoryModel {
   String? context;
   String? id;
   String? type;
-  List<Hydramember>? hydramember;
-  int? hydratotalItems;
+  List<HydraMember>? hydraMember;
+  int? hydraTotalItems;
 
-  VehicleMakeModel({this.context, this.id, this.type, this.hydramember, this.hydratotalItems});
+  VehicleCategoryModel({this.context, this.id, this.type, this.hydraMember, this.hydraTotalItems});
 
-  VehicleMakeModel.fromJson(Map<String, dynamic> json) {
+  VehicleCategoryModel.fromJson(Map<String, dynamic> json) {
     if(json["@context"] is String) {
       context = json["@context"];
     }
@@ -19,10 +19,10 @@ class VehicleMakeModel {
       type = json["@type"];
     }
     if(json["hydra:member"] is List) {
-      hydramember = json["hydra:member"]==null ? null : (json["hydra:member"] as List).map((e)=>Hydramember.fromJson(e)).toList();
+      hydraMember = json["hydra:member"]==null ? null : (json["hydra:member"] as List).map((e)=>HydraMember.fromJson(e)).toList();
     }
     if(json["hydra:totalItems"] is int) {
-      hydratotalItems = json["hydra:totalItems"];
+      hydraTotalItems = json["hydra:totalItems"];
     }
   }
 
@@ -31,23 +31,23 @@ class VehicleMakeModel {
     data["@context"] = context;
     data["@id"] = id;
     data["@type"] = type;
-    if(hydramember != null) {
-      data["hydra:member"] = hydramember!.map((e)=>e.toJson()).toList();
+    if(hydraMember != null) {
+      data["hydra:member"] = hydraMember!.map((e)=>e.toJson()).toList();
     }
-    data["hydra:totalItems"] = hydratotalItems;
+    data["hydra:totalItems"] = hydraTotalItems;
     return data;
   }
 }
 
-class Hydramember {
+class HydraMember  {
   String? id;
   String? type;
   String? name;
-  List<String>? models;
+  dynamic refId;
 
-  Hydramember({this.id, this.type, this.name, this.models});
+  HydraMember({this.id, this.type, this.name, this.refId});
 
-  Hydramember.fromJson(Map<String, dynamic> json) {
+  HydraMember.fromJson(Map<String, dynamic> json) {
     if(json["@id"] is String) {
       id = json["@id"];
     }
@@ -57,9 +57,7 @@ class Hydramember {
     if(json["name"] is String) {
       name = json["name"];
     }
-    if(json["models"] is List) {
-      models = json["models"]==null ? null : List<String>.from(json["models"]);
-    }
+    refId = json["refId"];
   }
 
   Map<String, dynamic> toJson() {
@@ -67,9 +65,7 @@ class Hydramember {
     data["@id"] = id;
     data["@type"] = type;
     data["name"] = name;
-    if(models != null) {
-      data["models"] = models;
-    }
+    data["refId"] = refId;
     return data;
   }
 }

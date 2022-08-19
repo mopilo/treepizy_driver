@@ -6,10 +6,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
 import 'package:treepizy_driver/core/widgets/card_button_widget.dart';
-import 'package:treepizy_driver/features/auth/presentation/screens/vehicle_folder/add_vehicle.dart';
 import 'package:treepizy_driver/features/utils/color.dart';
+import 'package:treepizy_driver/features/vehicle_management/screen/provider/vehicle_provider.dart';
 
-import '../../provider/vehicle_provider.dart';
+import 'add_vehicle.dart';
+
 
 class VehicleManagementSecondScreen extends StatefulWidget {
   const VehicleManagementSecondScreen({Key? key}) : super(key: key);
@@ -61,7 +62,7 @@ class _VehicleManagementSecondScreenState
               ),
             );
           }
-          if (provider.vehicleCategory!.hydramember!.isEmpty) {
+          if (provider.vehicleCategory!.hydraMember!.isEmpty) {
             return Text(
               'No Vehicle Category',
               style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
@@ -112,7 +113,7 @@ class _VehicleManagementSecondScreenState
                   const SizedBox(
                     height: 75,
                   ),
-                  ...provider.vehicleCategory!.hydramember!.map((data) {
+                  ...provider.vehicleCategory!.hydraMember!.map((data) {
                     return CardButtonWidget(
                         containerText: '',
                         containerColorText: AppColors.green,

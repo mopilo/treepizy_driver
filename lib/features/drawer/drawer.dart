@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:treepizy_driver/core/widgets/text_widget.dart';
-import 'package:treepizy_driver/features/auth/presentation/screens/vehicle_folder/vehicle_setting_screen.dart';
 import 'package:treepizy_driver/features/auth/presentation/screens/welcome_back/login.dart';
 import 'package:treepizy_driver/features/profile/profile.dart';
 import 'package:treepizy_driver/features/utils/color.dart';
+import 'package:treepizy_driver/features/vehicle_management/screen/pages/vehicle_setting_screen.dart';
 
 class MenuDrawer extends StatefulWidget {
   const MenuDrawer({Key? key}) : super(key: key);

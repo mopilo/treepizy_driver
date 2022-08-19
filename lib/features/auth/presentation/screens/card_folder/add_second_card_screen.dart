@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:treepizy_driver/features/auth/presentation/screens/vehicle_folder/vehicle_info_screen.dart';
 import 'package:treepizy_driver/features/utils/color.dart';
+import 'package:treepizy_driver/features/vehicle_management/screen/pages/vehicle_info_screen.dart';
 
 class AddSecondCardScreen extends StatelessWidget {
   const AddSecondCardScreen({Key? key}) : super(key: key);

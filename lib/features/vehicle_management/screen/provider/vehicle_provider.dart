@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:treepizy_driver/features/auth/data/datasource/vehicle_service.dart';
-import 'package:treepizy_driver/features/auth/data/model/vehicle_category_model.dart';
+import 'package:treepizy_driver/features/vehicle_management/data/datasource/vehicle_service.dart';
+import 'package:treepizy_driver/features/vehicle_management/data/model/vehicle_category_model.dart';
 
 class VehicleProvider extends ChangeNotifier {
   final VehicleService vehicleService;

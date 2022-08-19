@@ -6,11 +6,11 @@ import 'package:treepizy_driver/core/network/network_client.dart';
 import 'package:treepizy_driver/core/routing/compass.dart';
 import 'package:treepizy_driver/features/auth/data/datasource/auth_service.dart';
 import 'package:treepizy_driver/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:treepizy_driver/features/auth/presentation/provider/vehicle_provider.dart';
 import 'package:treepizy_driver/features/home/provider/home_provider.dart';
 import 'package:treepizy_driver/features/splash/splash_bloc.dart';
+import 'package:treepizy_driver/features/vehicle_management/screen/provider/vehicle_provider.dart';
 
-import '../../features/auth/data/datasource/vehicle_service.dart';
+import '../../features/vehicle_management/data/datasource/vehicle_service.dart';
 
 
 final inject = GetIt.instance;

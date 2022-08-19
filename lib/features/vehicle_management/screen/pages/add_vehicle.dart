@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
-import 'package:treepizy_driver/features/auth/presentation/provider/vehicle_provider.dart';
 import 'package:treepizy_driver/features/utils/color.dart';
+import 'package:treepizy_driver/features/vehicle_management/screen/provider/vehicle_provider.dart';
 
 import 'vehicle_verification_folder/vehicle_verification_pending.dart';
 
