@@ -109,7 +109,7 @@ class _VehicleManagementSecondScreenState
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             colorText: AppColors.black,
-                            buttonText: 'Bike'),
+                            buttonText: data['name']),
                       )
                       .toList(),
                   // CardButtonWidget(
