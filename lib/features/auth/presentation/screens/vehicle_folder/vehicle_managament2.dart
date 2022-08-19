@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -19,9 +21,27 @@ class VehicleManagementSecondScreen extends StatefulWidget {
 
 class _VehicleManagementSecondScreenState
     extends State<VehicleManagementSecondScreen> {
+      
+  String image(String? name) {
+    switch (name) {
+      case 'Car':
+        return 'assets/red_toyota.png';
+      case 'Trike':
+        return 'assets/red_toyota.png';
+      case 'Van':
+        return 'assets/van.png';
+      case 'Bike':
+        return 'assets/bike.png';
+      case 'Truck':
+        return 'assets/red_and_wite.png';
+      default:
+        return 'assets/red_and_wite.png';   
+    }
+  }
+
   @override
   void initState() {
-    Provider.of<VehicleProvider>(context, listen: false).getVehicle();
+    Provider.of<VehicleProvider>(context, listen: false).getVehicleCategory();
     super.initState();
   }
 
@@ -30,7 +50,7 @@ class _VehicleManagementSecondScreenState
     return Scaffold(
       body: SafeArea(child: Consumer<VehicleProvider>(
         builder: (_, provider, __) {
-          if (provider.responses == null) {
+          if (provider.vehicleCategory == null) {
             return Padding(
               padding: EdgeInsets.only(top: 28.w),
               child: Center(
@@ -41,9 +61,9 @@ class _VehicleManagementSecondScreenState
               ),
             );
           }
-          if (provider.responses?['hydra:member'].isEmpty) {
+          if (provider.vehicleCategory!.hydramember!.isEmpty) {
             return Text(
-              'No Vehicle',
+              'No Vehicle Category',
               style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
             );
           }
@@ -92,26 +112,24 @@ class _VehicleManagementSecondScreenState
                   const SizedBox(
                     height: 75,
                   ),
-                  ...provider.responses['hydra:member']
-                      .map(
-                        (data) => CardButtonWidget(
-                            containerText: '',
-                            containerColorText: AppColors.green,
-                            containerColor: AppColors.greenLight,
-                            image: 'assets/bike.png',
-                            onTap: () => Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const VehicleManagementSecondScreen())),
-                            isIcon: true,
-                            iconColor: AppColors.grey2,
-                            buttonText2: '',
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            colorText: AppColors.black,
-                            buttonText: data['name']),
-                      )
-                      .toList(),
+                  ...provider.vehicleCategory!.hydramember!.map((data) {
+                    return CardButtonWidget(
+                        containerText: '',
+                        containerColorText: AppColors.green,
+                        containerColor: AppColors.greenLight,
+                        image: image(data.name),
+                        onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const VehicleManagementSecondScreen())),
+                        isIcon: true,
+                        iconColor: AppColors.grey2,
+                        buttonText2: '',
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        colorText: AppColors.black,
+                        buttonText: data.name);
+                  }).toList(),
                   // CardButtonWidget(
                   //     containerText: '',
                   //     containerColorText: AppColors.green,

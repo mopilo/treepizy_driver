@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:treepizy_driver/core/network/network_client.dart';
+import 'package:treepizy_driver/features/auth/data/model/vehicle_category_model.dart';
+import 'package:treepizy_driver/features/auth/data/model/vehicle_make_model.dart';
 
 import '../../../../core/data/session_manager.dart';
 
@@ -24,24 +26,40 @@ class VehicleService {
     }
   }
 
- vehicleMake() async {
+ Future<VehicleMakeModel> vehicleMake() async {
     try {
-      print('repo in vehicleData.data}');
       Response vehicleData = await _networkClient.dio
           .get('${_networkClient.baseUrl}vehicle/makes',options: Options(
                 headers: {
                   "Authorization": "Bearer ${SessionManager.instance.authToken}"
                 },
               ));
-      print('repo in ${vehicleData.data}');
-      return vehicleData.data;
+      return VehicleMakeModel.fromJson(vehicleData.data);
     } on DioError catch (e) {
       if (e.response != null) {
         String error = await checker(e.response?.statusCode, e.response?.data);
         return e.response?.data;
       } else {
         print(e.message);
-        print("valalallala");
+        return e.response?.data;
+      }
+    }
+  }
+ Future<VehicleCategoryModel> vehicleCategory() async {
+    try {
+      var vehicleData = await _networkClient.dio
+          .get('${_networkClient.baseUrl}vehicle/categories',options: Options(
+                headers: {
+                  "Authorization": "Bearer ${SessionManager.instance.authToken}"
+                },
+              ));
+      return VehicleCategoryModel.fromJson(vehicleData.data);
+    } on DioError catch (e) {
+      if (e.response != null) {
+        String error = await checker(e.response?.statusCode, e.response?.data);
+        return e.response?.data;
+      } else {
+        print(e.message);
         return e.response?.data;
       }
     }
