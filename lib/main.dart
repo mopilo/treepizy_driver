@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:treepizy_driver/core/routing/compass.dart';
-import 'package:treepizy_driver/features/auth/presentation/bloc/auth_bloc.dart';
-
-import 'package:treepizy_driver/features/splash/splash_screen_auth.dart';
-
 import 'core/data/provider.dart';
 import 'core/environment/environment.dart';
 import 'core/injection/injection_container.dart';
-import 'features/auth/presentation/screens/vehicle_folder/vehicle_management.dart';
 import 'features/splash/splash_screen.dart';
 
 Future<void> main() async {
@@ -36,7 +30,7 @@ class MyApp extends StatelessWidget {
                 navigatorKey: inject.get<Compass>().navigatorKey,
                 theme: ThemeData(
                     primarySwatch: Colors.blue, fontFamily: 'CreatoDisplay'),
-                home: const VehicleManagement(),
+                home: const SplashScreen(),
               );
             }));
   }
