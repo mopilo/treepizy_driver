@@ -35,6 +35,10 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <activity
+           android:name="com.yalantis.ucrop.UCropActivity"
+           android:screenOrientation="portrait"
+           android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
             <!--map sdk key-->
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyD-BcnafK2G3DSOTUBPfgQVy8nfB94eOU8"/>

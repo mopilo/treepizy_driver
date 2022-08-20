@@ -32,6 +32,8 @@ class _OtpScreenState extends State<OtpScreen> {
           if (state is ValidatedOtp) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (_) => const CreateAccountScreen()));
+            // Navigator.push(
+            //     context, MaterialPageRoute(builder: (_) =>  ChangePassword()));
             // _telController.clear(); _passwordController.clear();
           }
         }, builder: (BuildContext context, state) {
@@ -95,14 +97,14 @@ class _OtpScreenState extends State<OtpScreen> {
                         ),
                         Center(
                             child: RichText(
-                          text: const TextSpan(
+                          text:  TextSpan(
                               text:
-                                  'Enter your 4-digit code sent to you at +234 801 323 4930. ',
-                              style: TextStyle(
+                                  'Enter your 4-digit code sent to you at +234 ${widget.tel}. ',
+                              style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400),
-                              children: <TextSpan>[
+                              children: const <TextSpan>[
                                 TextSpan(
                                   text: 'did you enter the correct number?',
                                   style: TextStyle(

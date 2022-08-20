@@ -34,4 +34,16 @@ class VehicleProvider extends ChangeNotifier {
       print('object');
     }
   }
+
+
+  void addVehicle({year, color, plateNo, engineNo, vehicleCat, model}) async {
+    try {
+      var vehicleResponse = await vehicleService.addVehicle(year, color, plateNo, engineNo, vehicleCat, model);
+      // _vehicleCategory = vehicleResponse;
+      // print('object $_vehicleCategory');
+      notifyListeners();
+    } catch (e) {
+      print('object');
+    }
+  }
 }

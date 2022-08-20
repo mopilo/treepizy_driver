@@ -45,7 +45,10 @@ class AuthService {
       return right(userData.data);
     } on DioError catch (e) {
       if (e.response != null) {
+        print(e.response?.data);
+
         String error = await checker(e.response?.statusCode, e.response?.data);
+        print(error);
         return left(error.toString());
       } else {
         print(e.message);

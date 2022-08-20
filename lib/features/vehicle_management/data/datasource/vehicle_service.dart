@@ -26,10 +26,11 @@ class VehicleService {
     }
   }
 
- Future<VehicleMakeModel> vehicleMake() async {
+  Future<VehicleMakeModel> vehicleMake() async {
     try {
-      Response vehicleData = await _networkClient.dio
-          .get('${_networkClient.baseUrl}vehicle/makes',options: Options(
+      Response vehicleData =
+          await _networkClient.dio.get('${_networkClient.baseUrl}vehicle/makes',
+              options: Options(
                 headers: {
                   "Authorization": "Bearer ${SessionManager.instance.authToken}"
                 },
@@ -45,10 +46,12 @@ class VehicleService {
       }
     }
   }
- Future<VehicleCategoryModel> vehicleCategory() async {
+
+  Future<VehicleCategoryModel> vehicleCategory() async {
     try {
       var vehicleData = await _networkClient.dio
-          .get('${_networkClient.baseUrl}vehicle/categories',options: Options(
+          .get('${_networkClient.baseUrl}vehicle/categories',
+              options: Options(
                 headers: {
                   "Authorization": "Bearer ${SessionManager.instance.authToken}"
                 },
@@ -57,6 +60,40 @@ class VehicleService {
     } on DioError catch (e) {
       if (e.response != null) {
         String error = await checker(e.response?.statusCode, e.response?.data);
+        return e.response?.data;
+      } else {
+        print(e.message);
+        return e.response?.data;
+      }
+    }
+  }
+
+  addVehicle(year, color, plateNo, engineNo, vehicleCat, model) async {
+    print("${_networkClient.baseUrl}/provider/vehicle");
+    try {
+      var vehicleData = await _networkClient.dio
+          .post('${_networkClient.baseUrl}provider/vehicles',
+              data: {
+                "year": int.parse(year),
+                "color": color,
+                "plateNo": plateNo,
+                "vehicleModel": model,
+                "serviceToAssociate": "string",
+                "engineNo": engineNo,
+                "vehicleCategory": vehicleCat
+              },
+              options: Options(
+                headers: {
+                  "Authorization": "Bearer ${SessionManager.instance.authToken}"
+                },
+              ));
+      print(vehicleData.data);
+      return vehicleData.data;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print(e.response?.data);
+        String error = await checker(e.response?.statusCode, e.response?.data);
+        print(error);
         return e.response?.data;
       } else {
         print(e.message);

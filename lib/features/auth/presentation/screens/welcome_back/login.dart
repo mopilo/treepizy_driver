@@ -8,6 +8,7 @@ import 'package:treepizy_driver/features/auth/data/model/login_model.dart';
 import 'package:treepizy_driver/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:treepizy_driver/features/auth/presentation/screens/create_account_folder/create_account.dart';
 import 'package:treepizy_driver/features/home/home.dart';
+import 'package:treepizy_driver/features/vehicle_management/screen/pages/vehicle_setting_screen.dart';
 
 import 'sign_up.dart';
 
@@ -39,7 +40,7 @@ class _WelcomeBackScreenState extends State<WelcomeBackScreen> {
                 listener: (BuildContext context, state) {
               if (state is AuthSuccess) {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => const Home()));
+                    context, MaterialPageRoute(builder: (_) => const VehicleSettingsScreen()));
                 // _telController.clear(); _passwordController.clear();
               }
             }, builder: (BuildContext context, state) {
@@ -148,7 +149,7 @@ class _WelcomeBackScreenState extends State<WelcomeBackScreen> {
                                 onTap: () {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) =>
-                                          const CreateAccountScreen()));
+                                          const SignUp()));
                                 },
                                 child: const Padding(
                                   padding: EdgeInsets.only(left: 33.0),
