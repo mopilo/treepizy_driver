@@ -11,7 +11,6 @@ import 'package:treepizy_driver/features/vehicle_management/screen/provider/vehi
 
 import 'add_vehicle.dart';
 
-
 class VehicleManagementSecondScreen extends StatefulWidget {
   const VehicleManagementSecondScreen({Key? key}) : super(key: key);
 
@@ -22,7 +21,6 @@ class VehicleManagementSecondScreen extends StatefulWidget {
 
 class _VehicleManagementSecondScreenState
     extends State<VehicleManagementSecondScreen> {
-      
   String image(String? name) {
     switch (name) {
       case 'Car':
@@ -36,7 +34,7 @@ class _VehicleManagementSecondScreenState
       case 'Truck':
         return 'assets/red_and_wite.png';
       default:
-        return 'assets/red_and_wite.png';   
+        return 'assets/red_and_wite.png';
     }
   }
 
@@ -119,10 +117,10 @@ class _VehicleManagementSecondScreenState
                         containerColorText: AppColors.green,
                         containerColor: AppColors.greenLight,
                         image: image(data.name),
-                        onTap: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const VehicleManagementSecondScreen())),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => AddVehicleScreen(category: data)));
+                        },
                         isIcon: true,
                         iconColor: AppColors.grey2,
                         buttonText2: '',
@@ -196,8 +194,7 @@ class _VehicleManagementSecondScreenState
                   //     buttonText: 'Truck'),
                   const SizedBox(height: 95),
                   ButtonWidget(
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => AddVehicleScreen())),
+                    onTap: () {},
                     isIcon: true,
                     buttonText: 'Enter Vehicle Details',
                     colorText: AppColors.white,

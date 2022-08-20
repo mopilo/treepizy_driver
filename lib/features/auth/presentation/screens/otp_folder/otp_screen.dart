@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:treepizy_driver/core/injection/injection_container.dart';
+import 'package:treepizy_driver/features/auth/presentation/screens/change_password.dart';
 import '../../bloc/auth_bloc.dart';
 import '../create_account_folder/create_account.dart';
 
@@ -30,7 +31,7 @@ class _OtpScreenState extends State<OtpScreen> {
             listener: (BuildContext context, state) {
           if (state is ValidatedOtp) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (_) => const CreateAccountScreen()));
+                context, MaterialPageRoute(builder: (_) =>  ChangePassword()));
             // _telController.clear(); _passwordController.clear();
           }
         }, builder: (BuildContext context, state) {
@@ -94,14 +95,14 @@ class _OtpScreenState extends State<OtpScreen> {
                         ),
                         Center(
                             child: RichText(
-                          text: const TextSpan(
+                          text:  TextSpan(
                               text:
-                                  'Enter your 4-digit code sent to you at +234 801 323 4930. ',
-                              style: TextStyle(
+                                  'Enter your 4-digit code sent to you at +234 ${widget.tel}. ',
+                              style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400),
-                              children: <TextSpan>[
+                              children: const <TextSpan>[
                                 TextSpan(
                                   text: 'did you enter the correct number?',
                                   style: TextStyle(

@@ -3,7 +3,7 @@ class VehicleMakeModel {
   String? context;
   String? id;
   String? type;
-  List<HydraMember>? hydraMember;
+  List<HydraMemberMake>? hydraMember;
   int? hydraTotalItems;
 
   VehicleMakeModel({this.context, this.id, this.type, this.hydraMember, this.hydraTotalItems});
@@ -19,7 +19,7 @@ class VehicleMakeModel {
       type = json["@type"];
     }
     if(json["hydra:member"] is List) {
-      hydraMember = json["hydra:member"]==null ? null : (json["hydra:member"] as List).map((e)=>HydraMember.fromJson(e)).toList();
+      hydraMember = json["hydra:member"]==null ? null : (json["hydra:member"] as List).map((e)=> HydraMemberMake.fromJson(e)).toList();
     }
     if(json["hydra:totalItems"] is int) {
       hydraTotalItems = json["hydra:totalItems"];
@@ -39,15 +39,15 @@ class VehicleMakeModel {
   }
 }
 
-class HydraMember {
+class HydraMemberMake {
   String? id;
   String? type;
   String? name;
   List<String>? models;
 
-  HydraMember({this.id, this.type, this.name, this.models});
+  HydraMemberMake({this.id, this.type, this.name, this.models});
 
-  HydraMember.fromJson(Map<String, dynamic> json) {
+  HydraMemberMake.fromJson(Map<String, dynamic> json) {
     if(json["@id"] is String) {
       id = json["@id"];
     }
