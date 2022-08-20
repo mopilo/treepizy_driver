@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:treepizy_driver/core/injection/injection_container.dart';
 import '../../bloc/auth_bloc.dart';
@@ -29,8 +30,8 @@ class _OtpScreenState extends State<OtpScreen> {
         child: BlocConsumer<AuthBloc, AuthState>(
             listener: (BuildContext context, state) {
           if (state is ValidatedOtp) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (_) => const CreateAccountScreen()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (_) => const CreateAccountScreen()));
             // _telController.clear(); _passwordController.clear();
           }
         }, builder: (BuildContext context, state) {
@@ -115,7 +116,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           height: 40,
                         ),
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 20),
+                          margin: EdgeInsets.symmetric(horizontal: 10.w),
                           child: PinCodeTextField(
                             appContext: context,
                             backgroundColor: Colors.transparent,

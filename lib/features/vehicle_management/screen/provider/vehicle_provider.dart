@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:treepizy_driver/features/vehicle_management/data/datasource/vehicle_service.dart';
 import 'package:treepizy_driver/features/vehicle_management/data/model/vehicle_category_model.dart';
+import 'package:treepizy_driver/features/vehicle_management/data/model/vehicle_make_model.dart';
 
 class VehicleProvider extends ChangeNotifier {
   final VehicleService vehicleService;
 
   VehicleProvider(this.vehicleService);
 
-  dynamic get responses => _responses;
-  dynamic _responses;
+  VehicleMakeModel? get responses => _responses;
+  VehicleMakeModel? _responses;
   VehicleCategoryModel? get vehicleCategory => _vehicleCategory;
   VehicleCategoryModel? _vehicleCategory;
 
