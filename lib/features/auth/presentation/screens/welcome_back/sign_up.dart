@@ -25,6 +25,7 @@ class _SignUpState extends State<SignUp> {
     super.initState();
     _authBloc = AuthBloc(inject());
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,6 +109,7 @@ class _SignUpState extends State<SignUp> {
                             EditTextForm(
                               controller: telController,
                               readOnly: false,
+                              obscureText: false,
                               label: '+234',
                             ),
                             const SizedBox(
@@ -117,6 +119,7 @@ class _SignUpState extends State<SignUp> {
                               controller: passController,
                               readOnly: false,
                               label: 'Password',
+                              obscureText: true,
                             ),
                             const SizedBox(
                               height: 30,
@@ -159,9 +162,9 @@ class _SignUpState extends State<SignUp> {
                             ButtonWidget(
                               onTap: () {
                                 _authBloc?.add(Register(
-                                        loginModel: LoginModel(
-                                           "234${telController.text}",
-                                            passController.text)));
+                                    loginModel: LoginModel(
+                                        "234${telController.text}",
+                                        passController.text)));
                               },
                               isIcon: true,
                               elevation: 3,
@@ -169,8 +172,8 @@ class _SignUpState extends State<SignUp> {
                               fontSize: 16,
                               colorText: Colors.white,
                               buttonText: state is Loading
-                                    ? "Creating Account..."
-                                    : "Creating Account",
+                                  ? "Creating Account..."
+                                  : "Creating Account",
                             ),
                           ],
                         )

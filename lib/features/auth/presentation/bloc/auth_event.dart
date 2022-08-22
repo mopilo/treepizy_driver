@@ -32,6 +32,16 @@ class ModifyAvatarEvent extends AuthEvent {
   List<Object> get props => [file];
 }
 
+class UploadEvent extends AuthEvent {
+  final file;
+  final String id;
+
+  UploadEvent({required this.file, required this.id});
+
+  @override
+  List<Object> get props => [file, id];
+}
+
 class ModifyUserEvent extends AuthEvent {
   final ModifyUserModel modifyUserModel;
 

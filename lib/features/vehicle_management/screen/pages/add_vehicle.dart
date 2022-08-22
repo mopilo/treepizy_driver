@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
 import 'package:treepizy_driver/features/document_upload/document_management.dart';
+import 'package:treepizy_driver/features/document_upload/document_stepper.dart';
 import 'package:treepizy_driver/features/utils/color.dart';
 import 'package:treepizy_driver/features/vehicle_management/data/model/vehicle_category_model.dart';
 import 'package:treepizy_driver/features/vehicle_management/screen/provider/vehicle_provider.dart';
@@ -151,19 +152,19 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
                 ),
                 ButtonWidget(
                   onTap: () {
-                    // provider.addVehicle(
-                    //     year: yr,
-                    //     color: color,
-                    //     plateNo: _regNumberController.text,
-                    //     engineNo: _engineNumberController.text,
-                    //     vehicleCat: widget.category.id,
-                    //     model: model!.models![0]);
+                    provider.addVehicle(
+                        year: yr,
+                        color: color,
+                        plateNo: _regNumberController.text,
+                        engineNo: _engineNumberController.text,
+                        vehicleCat: widget.category.id,
+                        model: model!.models![0]);
 
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => DocumentScreen()));
+                        MaterialPageRoute(builder: (_) => DocumentStepper()));
                   },
                   isIcon: true,
-                  buttonText: 'Submit Details',
+                  buttonText: provider.loading! ? 'Submitting...':'Submit Details',
                   colorText: AppColors.white,
                   fontSize: 15.5,
                   iconColor: AppColors.white,

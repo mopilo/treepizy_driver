@@ -70,6 +70,15 @@ class VehicleService {
 
   addVehicle(year, color, plateNo, engineNo, vehicleCat, model) async {
     print("${_networkClient.baseUrl}/provider/vehicle");
+    print({
+      "year": int.parse(year),
+      "color": color,
+      "plateNo": plateNo,
+      "vehicleModel": model,
+      "serviceToAssociate": "string",
+      "engineNo": engineNo,
+      "vehicleCategory": vehicleCat
+    });
     try {
       var vehicleData = await _networkClient.dio
           .post('${_networkClient.baseUrl}provider/vehicles',
@@ -78,7 +87,7 @@ class VehicleService {
                 "color": color,
                 "plateNo": plateNo,
                 "vehicleModel": model,
-                "serviceToAssociate": "string",
+                // "serviceToAssociate": "string",
                 "engineNo": engineNo,
                 "vehicleCategory": vehicleCat
               },

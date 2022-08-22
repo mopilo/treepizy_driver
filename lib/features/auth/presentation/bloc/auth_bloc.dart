@@ -19,6 +19,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<OtpEvent>(verifyOtp);
     on<ResendOtpEvent>(resendOtp);
     on<ModifyUserEvent>(modifyUser);
+    on<UploadEvent>(uploadDoc);
+
   }
 
   Future<void> login(LoginButtonPressed event, Emitter<AuthState> emit) async {
@@ -84,6 +86,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     // emit(Loading());
     (await _authService.modifyUserAvatar(event.file)).fold(
         (error) => emit(Error(error.toString())),
+      (data) => emit(UserAvatarModified(data)),
+    );
+  }
+
+  Future<void> uploadDoc(
+      UploadEvent event, Emitter<AuthState> emit) async {
+    // emit(Loading());
+    (await _authService.uploadCertificate(event.file, event.id)).fold(
+      (error) => emit(Error(error.toString())),
       (data) => emit(UserAvatarModified(data)),
     );
   }

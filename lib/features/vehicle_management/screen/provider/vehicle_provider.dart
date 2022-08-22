@@ -13,6 +13,7 @@ class VehicleProvider extends ChangeNotifier {
   VehicleMakeModel? _responses;
   VehicleCategoryModel? get vehicleCategory => _vehicleCategory;
   VehicleCategoryModel? _vehicleCategory;
+  bool? loading = false;
 
   void getVehicle() async {
     try {
@@ -35,15 +36,21 @@ class VehicleProvider extends ChangeNotifier {
     }
   }
 
-
   void addVehicle({year, color, plateNo, engineNo, vehicleCat, model}) async {
     try {
-      var vehicleResponse = await vehicleService.addVehicle(year, color, plateNo, engineNo, vehicleCat, model);
+      loading = true;
+      notifyListeners();
+
+      var vehicleResponse = await vehicleService.addVehicle(
+          year, color, plateNo, engineNo, vehicleCat, model);
       // _vehicleCategory = vehicleResponse;
       // print('object $_vehicleCategory');
+      loading = false;
       notifyListeners();
     } catch (e) {
       print('object');
+      loading = false;
+      notifyListeners();
     }
   }
 }

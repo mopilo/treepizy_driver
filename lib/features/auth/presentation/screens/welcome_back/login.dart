@@ -40,7 +40,9 @@ class _WelcomeBackScreenState extends State<WelcomeBackScreen> {
                 listener: (BuildContext context, state) {
               if (state is AuthSuccess) {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => const VehicleSettingsScreen()));
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const VehicleSettingsScreen()));
                 // _telController.clear(); _passwordController.clear();
               }
             }, builder: (BuildContext context, state) {
@@ -102,6 +104,7 @@ class _WelcomeBackScreenState extends State<WelcomeBackScreen> {
                             controller: telController,
                             readOnly: false,
                             label: '+234',
+                            obscureText: false
                           ),
                           const SizedBox(
                             height: 20,
@@ -148,8 +151,7 @@ class _WelcomeBackScreenState extends State<WelcomeBackScreen> {
                               GestureDetector(
                                 onTap: () {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SignUp()));
+                                      builder: (context) => const SignUp()));
                                 },
                                 child: const Padding(
                                   padding: EdgeInsets.only(left: 33.0),
