@@ -2,7 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:treepizy_driver/core/network/network_client.dart';
 import 'package:treepizy_driver/features/vehicle_management/data/model/vehicle_category_model.dart';
+import 'package:treepizy_driver/features/vehicle_management/data/model/vehicle_make_details.dart';
 import 'package:treepizy_driver/features/vehicle_management/data/model/vehicle_make_model.dart';
+import 'package:treepizy_driver/features/vehicle_management/data/model/vehicle_success_modal.dart';
 
 import '../../../../core/data/session_manager.dart';
 
@@ -47,6 +49,30 @@ class VehicleService {
     }
   }
 
+  Future<VehicleMakeDetails> vehicleMakeDetail(id) async {
+    try {
+      var vehicleData = await _networkClient.dio
+          .get("http://3.145.142.121$id",
+              options: Options(
+                headers: {
+                  "Authorization": "Bearer ${SessionManager.instance.authToken}"
+                },
+              ));
+                  print(vehicleData.data);
+
+      return VehicleMakeDetails.fromJson(vehicleData.data);
+    } on DioError catch (e) {
+      if (e.response != null) {
+        String error = await checker(e.response?.statusCode, e.response?.data);
+        return e.response?.data;
+      } else {
+        print(e.message);
+        return e.response?.data;
+      }
+    }
+  }
+
+
   Future<VehicleCategoryModel> vehicleCategory() async {
     try {
       var vehicleData = await _networkClient.dio
@@ -68,7 +94,7 @@ class VehicleService {
     }
   }
 
-  addVehicle(year, color, plateNo, engineNo, vehicleCat, model) async {
+  Future<AddVehicleSuccessModal> addVehicle(year, color, plateNo, engineNo, vehicleCat, model) async {
     print("${_networkClient.baseUrl}/provider/vehicle");
     print({
       "year": int.parse(year),
@@ -97,7 +123,7 @@ class VehicleService {
                 },
               ));
       print(vehicleData.data);
-      return vehicleData.data;
+      return AddVehicleSuccessModal.fromJson(vehicleData.data);
     } on DioError catch (e) {
       if (e.response != null) {
         print(e.response?.data);

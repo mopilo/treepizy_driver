@@ -7,6 +7,7 @@ import 'package:treepizy_driver/features/document_upload/document_management.dar
 import 'package:treepizy_driver/features/document_upload/document_stepper.dart';
 import 'package:treepizy_driver/features/utils/color.dart';
 import 'package:treepizy_driver/features/vehicle_management/data/model/vehicle_category_model.dart';
+import 'package:treepizy_driver/features/vehicle_management/data/model/vehicle_make_details.dart';
 import 'package:treepizy_driver/features/vehicle_management/screen/provider/vehicle_provider.dart';
 
 import '../../data/model/vehicle_make_model.dart';
@@ -27,24 +28,26 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
   String dropdownValue = 'Dog';
   String color = 'Blue';
   String yr = '2021';
-  HydraMemberMake? model;
+  HydraMemberMake? type;
+  Models? model;
+  List years = [];
 
-  var items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-  ];
+  getYears() {
+    var currentYear = DateTime.now().year;
+    var startYear = 2006;
+    while (startYear <= currentYear) {
+      years.add("${startYear++}");
+    }
+  }
 
-  var colors = ['Blue', 'Yellow'];
+  List colors = ['Blue', 'Yellow'];
 
-  var year = ['2022', '2020', "2021"];
   VehicleProvider? _vehicleProvider;
   @override
   void initState() {
     _vehicleProvider = Provider.of<VehicleProvider>(context, listen: false);
     Provider.of<VehicleProvider>(context, listen: false).getVehicle();
+    getYears();
     super.initState();
   }
 
@@ -124,6 +127,12 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
                 //   vehicleInfo: 'Toyota',
                 // ),
                 vehicleInfoContainer(
+                    vehicleText: 'Type',
+                    vehicleInfo: 'Corolla',
+                    isShow: true,
+                    arType: "type",
+                    function: () => print('rpint io i')),
+                vehicleInfoContainer(
                     vehicleText: 'Model',
                     vehicleInfo: 'Corolla',
                     isShow: true,
@@ -133,7 +142,7 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
                     vehicleText: 'Year',
                     vehicleInfo: '2011',
                     isShow: true,
-                    ar: year,
+                    ar: years,
                     va: yr),
                 vehicleInfoContainer(
                     vehicleText: 'Color',
@@ -153,18 +162,23 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
                 ButtonWidget(
                   onTap: () {
                     provider.addVehicle(
-                        year: yr,
-                        color: color,
-                        plateNo: _regNumberController.text,
-                        engineNo: _engineNumberController.text,
-                        vehicleCat: widget.category.id,
-                        model: model!.models![0]);
-
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => DocumentStepper()));
+                      year: yr,
+                      color: color,
+                      plateNo: _regNumberController.text,
+                      engineNo: _engineNumberController.text,
+                      vehicleCat: widget.category.id,
+                      model: model?.id
+                    );
+                    if(provider.addVehicleSuccessModal!.id!.isNotEmpty){
+                       Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => DocumentStepper(id: provider.addVehicleSuccessModal!.id!
+                                      .isNotEmpty)));
+                    }
+                   
                   },
                   isIcon: true,
-                  buttonText: provider.loading! ? 'Submitting...':'Submit Details',
+                  buttonText:
+                      provider.loading! ? 'Submitting...' : 'Submit Details',
                   colorText: AppColors.white,
                   fontSize: 15.5,
                   iconColor: AppColors.white,
@@ -184,7 +198,7 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
       String? vehicleInfo,
       bool? isShow = false,
       Function()? function,
-      List<String>? ar,
+      List? ar,
       String? arType,
       controller,
       String? va}) {
@@ -225,13 +239,13 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
                   controller: controller,
                   decoration: new InputDecoration.collapsed(hintText: ''),
                 )
-              : arType != null
+              : arType != null && arType == "type"
                   ? DropdownButton<HydraMemberMake>(
                       // Step 3.
                       isExpanded: true,
                       underline: SizedBox.shrink(),
 
-                      value: model,
+                      value: type,
                       // Step 4.
                       items: _vehicleProvider?.responses?.hydraMember
                           ?.map<DropdownMenuItem<HydraMemberMake>>(
@@ -248,34 +262,65 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
                       onChanged: (newValue) {
                         print(newValue);
                         setState(() {
-                          model = newValue;
+                          type = newValue;
                         });
+                        _vehicleProvider?.getVehicleDetails(newValue?.id);
                       },
                     )
-                  : DropdownButton<String>(
-                      // Step 3.
-                      isExpanded: true,
-                      underline: SizedBox.shrink(),
+                  : arType != null && arType == "model"
+                      ? DropdownButton<Models>(
+                          // Step 3.
+                          isExpanded: true,
+                          underline: SizedBox.shrink(),
 
-                      value: va,
-                      // Step 4.
-                      items: ar?.map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(
-                            value,
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        );
-                      }).toList(),
-                      // Step 5.
-                      onChanged: (String? newValue) {
-                        print(newValue);
-                        setState(() {
-                          va == yr ? yr = newValue! : color = newValue!;
-                        });
-                      },
-                    ),
+                          value: model,
+                          // Step 4.
+                          items: _vehicleProvider?.vehicleMakeDetails?.models
+                              ?.map<DropdownMenuItem<Models>>(
+                                  (Models value) {
+                            return DropdownMenuItem<Models>(
+                              value: value,
+                              child: Text(
+                                value.name!,
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.black),
+                              ),
+                            );
+                          }).toList(),
+                          // Step 5.
+                          onChanged: (newValue) {
+                            print(newValue);
+                            setState(() {
+                              model = newValue;
+                            });
+                            // _vehicleProvider?.getVehicleDetails(newValue?.id);
+                          },
+                        )
+                      : DropdownButton<String>(
+                          // Step 3.
+                          isExpanded: true,
+                          underline: SizedBox.shrink(),
+
+                          value: va,
+                          // Step 4.
+                          items: ar
+                              ?.map<DropdownMenuItem<String>>((dynamic value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(
+                                value,
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            );
+                          }).toList(),
+                          // Step 5.
+                          onChanged: (String? newValue) {
+                            print(newValue);
+                            setState(() {
+                              va == yr ? yr = newValue! : color = newValue!;
+                            });
+                          },
+                        ),
         ],
       ),
       //     isShow!

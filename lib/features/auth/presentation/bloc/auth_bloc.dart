@@ -92,7 +92,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> uploadDoc(
       UploadEvent event, Emitter<AuthState> emit) async {
-    // emit(Loading());
+    emit(Loading());
     (await _authService.uploadCertificate(event.file, event.id)).fold(
       (error) => emit(Error(error.toString())),
       (data) => emit(UserAvatarModified(data)),

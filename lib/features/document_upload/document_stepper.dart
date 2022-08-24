@@ -16,6 +16,8 @@ import 'package:treepizy_driver/features/vehicle_management/screen/vehicle_verif
 import 'document_management.dart';
 
 class DocumentStepper extends StatefulWidget {
+  final String? id;
+  const DocumentStepper(this.id, {Key? key}) : super(key: key);
   @override
   _StepperDemoState createState() => _StepperDemoState();
 }
@@ -27,7 +29,7 @@ class _StepperDemoState extends State<DocumentStepper> {
 
   AuthBloc? _authBloc;
 
-    @override
+  @override
   void initState() {
     super.initState();
     _authBloc = AuthBloc(inject());
@@ -135,14 +137,9 @@ class _StepperDemoState extends State<DocumentStepper> {
                       create: (context) => _authBloc!,
                       child: BlocConsumer<AuthBloc, AuthState>(
                           listener: (BuildContext context, state) {
-                        // if (state is AuthSuccess) {
-                        //   Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //           builder: (_) =>
-                        //                VehicleSettingsScreen()));
-                        //   // _telController.clear(); _passwordController.clear();
-                        // }
+                        if (state is UserAvatarModified) {
+                          continued();
+                        }
                       }, builder: (BuildContext context, state) {
                         return Container(
                           child: Column(
@@ -186,10 +183,12 @@ class _StepperDemoState extends State<DocumentStepper> {
                               ),
                               ButtonWidget(
                                 onTap: () {
-                                  continued();
-                                  // _authBloc?.add(UploadEvent(file: _id, id: "/treepizy/public/index.php/api/provider/vehicles/394"));
+                                  _authBloc?.add(
+                                      UploadEvent(file: _id, id: widget.id!));
                                 },
-                                buttonText: 'Upload Image',
+                                buttonText: state is Loading
+                                    ? "Uploading..."
+                                    : 'Upload Image',
                                 colorText: AppColors.white,
                                 fontSize: 15.5,
                                 fontWeight: FontWeight.w600,
