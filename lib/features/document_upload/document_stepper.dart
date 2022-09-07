@@ -144,20 +144,20 @@ class _StepperDemoState extends State<DocumentStepper> {
                         return Container(
                           child: Column(
                             children: <Widget>[
-                              Text('Upload License',
+                              const Text('Upload License',
                                   style: TextStyle(fontSize: 10)),
-                              TextWidget(
+                              const TextWidget(
                                 text: "Upload Certificate",
                                 size: 24,
                               ),
-                              TextWidget(
+                              const TextWidget(
                                 text:
                                     "Upload the front page of your Vehicle Certificate",
                                 size: 14,
                                 height: 1.4,
                               ),
                               Container(
-                                margin: EdgeInsets.symmetric(vertical: 40),
+                                margin: const EdgeInsets.symmetric(vertical: 40),
                                 child: GestureDetector(
                                   onTap: () => showSheet(
                                     context,
