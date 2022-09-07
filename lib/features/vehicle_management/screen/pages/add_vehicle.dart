@@ -4,11 +4,14 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:treepizy_driver/core/widgets/button_widget.dart';
 import 'package:treepizy_driver/features/document_upload/document_management.dart';
+import 'package:treepizy_driver/features/document_upload/document_stepper.dart';
 import 'package:treepizy_driver/features/utils/color.dart';
 import 'package:treepizy_driver/features/vehicle_management/data/model/vehicle_category_model.dart';
+import 'package:treepizy_driver/features/vehicle_management/data/model/vehicle_make_details.dart';
 import 'package:treepizy_driver/features/vehicle_management/screen/provider/vehicle_provider.dart';
 
 import '../../data/model/vehicle_make_model.dart';
+import '../vehicle_verification_folder/vehicle_verification_pending.dart';
 
 class AddVehicleScreen extends StatefulWidget {
   final HydraMember category;
@@ -25,24 +28,26 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
   String dropdownValue = 'Dog';
   String color = 'Blue';
   String yr = '2021';
-  HydraMemberMake? model;
+  HydraMemberMake? type;
+  Models? model;
+  List years = [];
 
-  var items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-  ];
+  getYears() {
+    var currentYear = DateTime.now().year;
+    var startYear = 2006;
+    while (startYear <= currentYear) {
+      years.add("${startYear++}");
+    }
+  }
 
-  var colors = ['Blue', 'Yellow'];
+  List colors = ['Blue', 'Yellow'];
 
-  var year = ['2022', '2020', "2021"];
   VehicleProvider? _vehicleProvider;
   @override
   void initState() {
     _vehicleProvider = Provider.of<VehicleProvider>(context, listen: false);
     Provider.of<VehicleProvider>(context, listen: false).getVehicle();
+    getYears();
     super.initState();
   }
 
@@ -65,6 +70,8 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
                 ),
               );
             }
+
+            // print(provider.responses?.hydraMember?[0].name);
             return Column(
               children: [
                 Container(
@@ -120,16 +127,22 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
                 //   vehicleInfo: 'Toyota',
                 // ),
                 vehicleInfoContainer(
-                  vehicleText: 'Model',
-                  vehicleInfo: 'Corolla',
-                  isShow: true,
-                  arType: "model",
-                ),
+                    vehicleText: 'Type',
+                    vehicleInfo: 'Corolla',
+                    isShow: true,
+                    arType: "type",
+                    function: () => print('rpint io i')),
+                vehicleInfoContainer(
+                    vehicleText: 'Model',
+                    vehicleInfo: 'Corolla',
+                    isShow: true,
+                    arType: "model",
+                    function: () => print('rpint io i')),
                 vehicleInfoContainer(
                     vehicleText: 'Year',
                     vehicleInfo: '2011',
                     isShow: true,
-                    ar: year,
+                    ar: years,
                     va: yr),
                 vehicleInfoContainer(
                     vehicleText: 'Color',
@@ -141,16 +154,30 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
                     vehicleText: 'Registration Number',
                     vehicleInfo: 'ABC 654 BY',
                     controller: _regNumberController),
+                // vehicleInfoContainer(
+                //     vehicleText: 'Passenger Seat', vehicleInfo: '4 Seaters'),
                 const SizedBox(
                   height: 70,
                 ),
                 ButtonWidget(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => DocumentScreen()));
+                    provider.addVehicle(
+                      year: yr,
+                      color: color,
+                      plateNo: _regNumberController.text,
+                      engineNo: _engineNumberController.text,
+                      vehicleCat: widget.category.id,
+                      model: model?.id
+                    );
+                    if(provider.addVehicleSuccessModal!.id!.isNotEmpty){
+                       Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => DocumentStepper(id: provider.addVehicleSuccessModal!.id!)));
+                    }
+                   
                   },
                   isIcon: true,
-                  buttonText: 'Submit Details',
+                  buttonText:
+                      provider.loading! ? 'Submitting...' : 'Submit Details',
                   colorText: AppColors.white,
                   fontSize: 15.5,
                   iconColor: AppColors.white,
@@ -170,18 +197,14 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
       String? vehicleInfo,
       bool? isShow = false,
       Function()? function,
-      List<String>? ar,
+      List? ar,
       String? arType,
       controller,
       String? va}) {
     return Container(
       // width: double.infinity,
-      margin: const EdgeInsets.only(bottom: 17),
-      padding: EdgeInsets.only(
-          left: 12,
-          right: 12,
-          top: isShow == true ? 5 : 15,
-          bottom: isShow == true ? 0 : 12),
+      margin: const EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       decoration: BoxDecoration(
           color: AppColors.white,
           border: Border.all(color: AppColors.grey),
@@ -190,87 +213,127 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
           // Row(
           //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
           //   children: [
-          Padding(
-        padding: const EdgeInsets.only(top: 2.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              vehicleText!,
-              style: const TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w300),
-            ),
-            // const SizedBox(
-            //   height: 3,
-            // ),
-            // Text(
-            //   vehicleInfo!,
-            //   style: const TextStyle(
-            //       color: Colors.black,
-            //       fontSize: 18,
-            //       fontWeight: FontWeight.w600),
-            // ),
-            !isShow!
-                ? TextField(
-                    controller: controller,
-                    decoration: const InputDecoration.collapsed(hintText: ''),
-                  )
-                : arType != null
-                    ? DropdownButton<HydraMemberMake>(
-                        // Step 3.
-                        isExpanded: true,
-                        underline: const SizedBox.shrink(),
+          Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            vehicleText!,
+            style: const TextStyle(
+                color: AppColors.grey,
+                fontSize: 14,
+                fontWeight: FontWeight.w300),
+          ),
+          const SizedBox(
+            height: 6,
+          ),
+          // Text(
+          //   vehicleInfo!,
+          //   style: const TextStyle(
+          //       color: Colors.black,
+          //       fontSize: 18,
+          //       fontWeight: FontWeight.w600),
+          // ),
+          !isShow!
+              ? TextField(
+                  controller: controller,
+                  decoration: new InputDecoration.collapsed(hintText: ''),
+                )
+              : arType != null && arType == "type"
+                  ? DropdownButton<HydraMemberMake>(
+                      // Step 3.
+                      isExpanded: true,
+                      underline: SizedBox.shrink(),
 
-                        value: model,
-                        // Step 4.
-                        items: _vehicleProvider?.responses?.hydraMember
-                            ?.map<DropdownMenuItem<HydraMemberMake>>(
-                                (HydraMemberMake value) {
-                          return DropdownMenuItem<HydraMemberMake>(
-                            value: value,
-                            child: Text(
-                              value.name!,
-                              style: TextStyle(
-                                  fontSize: 16.sp, color: Colors.black),
-                            ),
-                          );
-                        }).toList(),
-                        // Step 5.
-                        onChanged: (newValue) {
-                          print(newValue);
-                          setState(() {
-                            model = newValue;
-                          });
-                        },
-                      )
-                    : DropdownButton<String>(
-                        isExpanded: true,
-                        underline: const SizedBox.shrink(),
+                      value: type,
+                      // Step 4.
+                      items: _vehicleProvider?.responses?.hydraMember
+                          ?.map<DropdownMenuItem<HydraMemberMake>>(
+                              (HydraMemberMake value) {
+                        return DropdownMenuItem<HydraMemberMake>(
+                          value: value,
+                          child: Text(
+                            value.name!,
+                            style: TextStyle(fontSize: 16, color: Colors.black),
+                          ),
+                        );
+                      }).toList(),
+                      // Step 5.
+                      onChanged: (newValue) {
+                        print(newValue);
+                        setState(() {
+                          type = newValue;
+                        });
+                        _vehicleProvider?.getVehicleDetails(newValue?.id);
+                      },
+                    )
+                  : arType != null && arType == "model"
+                      ? DropdownButton<Models>(
+                          // Step 3.
+                          isExpanded: true,
+                          underline: SizedBox.shrink(),
 
-                        value: va,
-                        items:
-                            ar?.map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(
-                              value,
-                              style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w600),
-                            ),
-                          );
-                        }).toList(),
-                        // Step 5.
-                        onChanged: (String? newValue) {
-                          print(newValue);
-                          setState(() {
-                            va == yr ? yr = newValue! : color = newValue!;
-                          });
-                        },
-                      ),
-          ],
-        ),
+                          value: model,
+                          // Step 4.
+                          items: _vehicleProvider?.vehicleMakeDetails?.models
+                              ?.map<DropdownMenuItem<Models>>(
+                                  (Models value) {
+                            return DropdownMenuItem<Models>(
+                              value: value,
+                              child: Text(
+                                value.name!,
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.black),
+                              ),
+                            );
+                          }).toList(),
+                          // Step 5.
+                          onChanged: (newValue) {
+                            print(newValue);
+                            setState(() {
+                              model = newValue;
+                            });
+                            // _vehicleProvider?.getVehicleDetails(newValue?.id);
+                          },
+                        )
+                      : DropdownButton<String>(
+                          // Step 3.
+                          isExpanded: true,
+                          underline: SizedBox.shrink(),
+
+                          value: va,
+                          // Step 4.
+                          items: ar
+                              ?.map<DropdownMenuItem<String>>((dynamic value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(
+                                value,
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            );
+                          }).toList(),
+                          // Step 5.
+                          onChanged: (String? newValue) {
+                            print(newValue);
+                            setState(() {
+                              va == yr ? yr = newValue! : color = newValue!;
+                            });
+                          },
+                        ),
+        ],
       ),
+      //     isShow!
+      //         ? GestureDetector(
+      //             onTap: function,
+      //             child: Icon(
+      //               Icons.arrow_drop_down,
+      //               size: 20.sp,
+      //               color: AppColors.grey,
+      //             ),
+      //           )
+      //         : const SizedBox.shrink()
+      //   ],
+      // ),
     );
   }
 }

@@ -14,4 +14,7 @@ class CustomColors {
   static const grey = Color(0xff707070);
   static const bg = Color(0xFFF7F7F7);
   static const gray = Color(0xff515151);
+
+  static const Color yellowThick = Color(0XFFFDD340);
+  static const Color yellowThick1 = Color(0XFFE18A07);
 }

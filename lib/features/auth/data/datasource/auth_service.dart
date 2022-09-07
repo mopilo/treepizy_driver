@@ -244,4 +244,32 @@ class AuthService {
     }
     return right(result);
   }
+
+  Future<Either<Exception, Map<dynamic, dynamic>>> uploadCertificate(
+      file, id) async {
+    Map result;
+    print(file!.path);
+    try {
+      var request = http.MultipartRequest('POST',
+          Uri.parse('${_networkClient.baseUrl!}vehicle/certificates/upload'));
+
+      //Header....
+      request.headers['Authorization'] =
+          'Bearer ${SessionManager.instance.authToken}';
+      request.files.add(await http.MultipartFile.fromPath('file', file!.path));
+      request.fields['vehicle'] = id;
+      var response = await request.send();
+      final res = await http.Response.fromStream(response);
+      result = json.decode(res.body);
+      print(result);
+    } on DioError catch (e) {
+      if (e.response != null) {
+        String error = await checker(e.response?.statusCode, e.response?.data);
+        return left(Exception(error));
+      } else {
+        return left(Exception('Something went wrong'));
+      }
+    }
+    return right(result);
+  }
 }
