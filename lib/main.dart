@@ -5,8 +5,8 @@ import 'package:treepizy_driver/core/routing/compass.dart';
 import 'core/data/provider.dart';
 import 'core/environment/environment.dart';
 import 'core/injection/injection_container.dart';
-import 'features/splash/splash_screen.dart';
-import 'features/submit_driver_lincense_folder/submit_drivers_lincense.dart';
+import 'features/splash/splash_screen_auth.dart';
+import 'features/wallet/wallet.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
                 navigatorKey: inject.get<Compass>().navigatorKey,
                 theme: ThemeData(
                     primarySwatch: Colors.blue, fontFamily: 'CreatoDisplay'),
-                home: const SubmitDriversLincenceFirstScreen(),
+                home: const WalletScreen(),
               );
             }));
   }

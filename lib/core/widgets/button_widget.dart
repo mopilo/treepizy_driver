@@ -4,6 +4,7 @@ class ButtonWidget extends StatelessWidget {
   const ButtonWidget({
     Key? key,
     this.elevation,
+    this.border,
     this.color,
     this.colorText,
     this.fontWeight,
@@ -13,6 +14,7 @@ class ButtonWidget extends StatelessWidget {
     this.fontSize = 14,
     this.isIcon = false,
     required this.onTap,
+    this.isJustText = false,
   }) : super(key: key);
   final double? elevation;
   final double? fontSize;
@@ -24,6 +26,8 @@ class ButtonWidget extends StatelessWidget {
   final String? buttonText;
   final bool? isIcon;
   final Function()? onTap;
+  final bool? isJustText;
+  final double? border;
 
   @override
   Widget build(BuildContext context) {
@@ -31,37 +35,47 @@ class ButtonWidget extends StatelessWidget {
       onTap: onTap!,
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6.0),
+          borderRadius: BorderRadius.circular(border ?? 6.0),
         ),
         elevation: elevation,
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(color: colorBorder ?? const Color(0x00000000)),
             color: color,
-            borderRadius: const BorderRadius.all(Radius.circular(6)),
+            borderRadius: BorderRadius.all(Radius.circular(border ?? 10)),
           ),
           child: Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: 30.0, vertical: isIcon! ? 14.8 : 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  buttonText ?? "",
-                  style: TextStyle(
-                      color: colorText,
-                      fontSize: fontSize,
-                      fontWeight: fontWeight ?? FontWeight.w500),
-                ),
-                isIcon!
-                    ? Icon(
-                        Icons.arrow_forward,
-                        color: iconColor ?? colorText,
-                        size: 30,
-                      )
-                    : const SizedBox.shrink()
-              ],
-            ),
+                horizontal: 30.0, vertical: isIcon! ? 14.8 : 16.4),
+            child: !isJustText!
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        buttonText ?? "",
+                        style: TextStyle(
+                            color: colorText,
+                            fontSize: fontSize,
+                            fontWeight: fontWeight ?? FontWeight.w500),
+                      ),
+                      isIcon!
+                          ? Icon(
+                              Icons.arrow_forward,
+                              color: iconColor ?? colorText,
+                              size: 30,
+                            )
+                          : const SizedBox.shrink()
+                    ],
+                  )
+                : Center(
+                    child: Text(
+                      buttonText ?? "",
+                      style: TextStyle(
+                          color: colorText,
+                          fontSize: fontSize,
+                          fontWeight: fontWeight ?? FontWeight.w500),
+                    ),
+                  ),
           ),
         ),
       ),
