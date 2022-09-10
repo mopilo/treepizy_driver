@@ -68,6 +68,7 @@ class CreateAccountScreen extends StatelessWidget {
               // controller: controller,
               readOnly: false,
               label: 'First name',
+              obscureText: false,
             ),
             EditTextForm(
               // controller: controller,

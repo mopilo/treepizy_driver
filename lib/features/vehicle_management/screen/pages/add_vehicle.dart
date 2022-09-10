@@ -171,8 +171,9 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
                     );
                     if(provider.addVehicleSuccessModal!.id!.isNotEmpty){
                        Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => DocumentStepper(id: provider.addVehicleSuccessModal!.id!
-                                      .isNotEmpty)));
+
+                        MaterialPageRoute(builder: (_) => DocumentStepper(id: provider.addVehicleSuccessModal!.id!)));
+
                     }
                    
                   },

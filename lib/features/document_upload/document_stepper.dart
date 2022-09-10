@@ -17,7 +17,7 @@ import 'document_management.dart';
 
 class DocumentStepper extends StatefulWidget {
   final String? id;
-  const DocumentStepper(this.id, {Key? key}) : super(key: key);
+  const DocumentStepper({this.id, Key? key}) : super(key: key);
   @override
   _StepperDemoState createState() => _StepperDemoState();
 }
