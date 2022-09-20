@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/widgets/button_widget.dart';
 import '../../core/widgets/text_form_field.dart';
+import '../subscription/subscription_screen.dart';
 
 class NewAccountScreen extends StatelessWidget {
   NewAccountScreen({super.key});
@@ -102,7 +103,7 @@ class NewAccountScreen extends StatelessWidget {
                   ),
                   ButtonWidget(
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => NewAccountScreen())),
+                        builder: (context) => const SubcriptionScreen())),
                     isIcon: false,
                     isJustText: true,
                     color: Colors.black,
